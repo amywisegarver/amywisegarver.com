@@ -1,0 +1,195 @@
+import Reveal from "@/components/Reveal";
+import type { Block } from "@/lib/projects";
+
+function Num({ n }: { n: number }) {
+  return (
+    <span className="font-mono text-xs text-accent">
+      {String(n).padStart(2, "0")}
+    </span>
+  );
+}
+
+function TextBlock({ block }: { block: Extract<Block, { type: "text" }> }) {
+  return (
+    <Reveal className="max-w-2xl">
+      <h2 className="font-display text-2xl sm:text-3xl text-ink mb-5">
+        {block.heading}
+      </h2>
+      <div className="space-y-4 text-muted leading-relaxed">
+        {block.paragraphs.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </div>
+    </Reveal>
+  );
+}
+
+function NumberedBlock({
+  block,
+}: {
+  block: Extract<Block, { type: "numbered" }>;
+}) {
+  return (
+    <div className="max-w-3xl">
+      <Reveal>
+        <h2 className="font-display text-2xl sm:text-3xl text-ink mb-5">
+          {block.heading}
+        </h2>
+        {block.intro && (
+          <p className="text-muted leading-relaxed mb-8 max-w-2xl">
+            {block.intro}
+          </p>
+        )}
+      </Reveal>
+      <div className="grid sm:grid-cols-2 gap-6">
+        {block.items.map((item, i) => (
+          <Reveal key={item.title} delay={i * 0.05}>
+            <div className="border-t border-line pt-4">
+              <Num n={i + 1} />
+              <h3 className="font-display text-lg text-ink mt-2 mb-1">
+                {item.title}
+              </h3>
+              <p className="text-sm text-muted leading-relaxed">
+                {item.body}
+              </p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function QuoteBlock({ block }: { block: Extract<Block, { type: "quote" }> }) {
+  return (
+    <Reveal className="max-w-2xl">
+      <blockquote className="relative border-l-2 border-accent pl-6 py-1">
+        <p className="font-display italic text-2xl sm:text-3xl text-ink leading-snug">
+          &ldquo;{block.text}&rdquo;
+        </p>
+        {block.attribution && (
+          <cite className="mt-3 block font-mono text-xs uppercase tracking-widest text-muted not-italic">
+            {block.attribution}
+          </cite>
+        )}
+      </blockquote>
+    </Reveal>
+  );
+}
+
+function CompareBlock({
+  block,
+}: {
+  block: Extract<Block, { type: "compare" }>;
+}) {
+  return (
+    <div className="grid sm:grid-cols-2 gap-6 max-w-3xl">
+      <Reveal>
+        <div className="rounded-2xl border border-line bg-surface-raised/60 p-6 h-full">
+          <p className="font-mono text-xs uppercase tracking-widest text-muted mb-3">
+            {block.before.title}
+          </p>
+          <p className="text-muted leading-relaxed">{block.before.body}</p>
+        </div>
+      </Reveal>
+      <Reveal delay={0.08}>
+        <div className="rounded-2xl border border-accent/40 bg-accent-soft/30 p-6 h-full">
+          <p className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
+            {block.after.title}
+          </p>
+          <p className="text-ink/80 leading-relaxed">{block.after.body}</p>
+        </div>
+      </Reveal>
+    </div>
+  );
+}
+
+function DecisionsBlock({
+  block,
+}: {
+  block: Extract<Block, { type: "decisions" }>;
+}) {
+  return (
+    <div className="max-w-3xl">
+      <Reveal>
+        <h2 className="font-display text-2xl sm:text-3xl text-ink mb-5">
+          {block.heading}
+        </h2>
+        {block.intro && (
+          <p className="text-muted leading-relaxed mb-10 max-w-2xl">
+            {block.intro}
+          </p>
+        )}
+      </Reveal>
+      <div className="space-y-10">
+        {block.items.map((item, i) => (
+          <Reveal key={item.title} delay={i * 0.04}>
+            <div className="grid sm:grid-cols-[64px_1fr] gap-3 sm:gap-6">
+              <Num n={i + 1} />
+              <div>
+                <h3 className="font-display text-xl text-ink mb-1">
+                  {item.title}
+                </h3>
+                {item.why && (
+                  <p className="text-sm italic text-accent mb-3">
+                    Why: {item.why}
+                  </p>
+                )}
+                <div className="space-y-3 text-muted leading-relaxed">
+                  {item.body.map((p, j) => (
+                    <p key={j}>{p}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function OutcomesBlock({
+  block,
+}: {
+  block: Extract<Block, { type: "outcomes" }>;
+}) {
+  return (
+    <div className="max-w-2xl rounded-3xl bg-ink text-white px-8 py-10 sm:px-10 sm:py-12">
+      <Reveal>
+        <h2 className="font-display text-2xl sm:text-3xl mb-6">
+          {block.heading}
+        </h2>
+      </Reveal>
+      <ul className="space-y-4">
+        {block.items.map((item, i) => (
+          <Reveal key={i} delay={i * 0.05}>
+            <li className="flex gap-3 text-white/85 leading-relaxed">
+              <span className="font-mono text-accent shrink-0">✓</span>
+              <span>{item}</span>
+            </li>
+          </Reveal>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default function BlockRenderer({ block }: { block: Block }) {
+  switch (block.type) {
+    case "text":
+      return <TextBlock block={block} />;
+    case "numbered":
+      return <NumberedBlock block={block} />;
+    case "quote":
+      return <QuoteBlock block={block} />;
+    case "compare":
+      return <CompareBlock block={block} />;
+    case "decisions":
+      return <DecisionsBlock block={block} />;
+    case "outcomes":
+      return <OutcomesBlock block={block} />;
+    default:
+      return null;
+  }
+}

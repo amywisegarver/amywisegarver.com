@@ -1,65 +1,118 @@
-import Image from "next/image";
+import Reveal from "@/components/Reveal";
+import ProjectCard from "@/components/ProjectCard";
+import StatCounter from "@/components/StatCounter";
+import MagneticButton from "@/components/MagneticButton";
+import { projects, comingSoon } from "@/lib/projects";
+import { contact } from "@/lib/experience";
+
+const headlineStats = [
+  { value: "95%+", label: "over annual sales target driven by a feature I led" },
+  { value: "3 → 9", label: "core features scaled on one platform" },
+  { value: "5+", label: "years designing end-to-end product experiences" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      <section className="relative pt-40 pb-24 md:pt-48 md:pb-32 overflow-hidden">
+        <div className="pointer-events-none absolute -top-24 right-[-10%] h-[420px] w-[420px] rounded-full bg-accent-soft/60 blur-3xl" />
+        <div className="mx-auto max-w-6xl px-6 md:px-8 relative">
+          <Reveal>
+            <p className="font-mono text-xs uppercase tracking-widest text-muted mb-6">
+              Senior Product Designer · Seattle
+            </p>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl leading-[1.03] tracking-tight text-ink max-w-4xl">
+              I design systems people trust with the parts of life they
+              can&apos;t afford to get wrong.
+            </h1>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <p className="mt-8 text-lg text-muted max-w-xl leading-relaxed">
+              Five-plus years shaping intuitive, trustworthy product
+              experiences across complex hardware, IoT, and web platforms —
+              from smart-home automations that control real locks and
+              windows, to specification tools architects stake real projects
+              on. Now bringing that same rigor to fintech.
+            </p>
+          </Reveal>
+          <Reveal delay={0.25}>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <MagneticButton href="/#work">See the work</MagneticButton>
+              <a
+                href="/about"
+                className="text-sm text-ink underline decoration-line underline-offset-4 hover:decoration-accent transition-colors"
+              >
+                More about me →
+              </a>
+            </div>
+          </Reveal>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="border-y border-line bg-surface-raised/60">
+        <div className="mx-auto max-w-6xl px-6 md:px-8 py-14 md:py-16">
+          <Reveal>
+            <StatCounter stats={headlineStats} />
+          </Reveal>
         </div>
-      </main>
+      </section>
+
+      <section id="work" className="mx-auto max-w-6xl px-6 md:px-8 py-24 md:py-32">
+        <Reveal>
+          <div className="flex items-end justify-between gap-6 mb-14">
+            <h2 className="font-display text-3xl sm:text-4xl text-ink">
+              Selected work
+            </h2>
+            <span className="font-mono text-xs uppercase tracking-widest text-muted">
+              {String(projects.length).padStart(2, "0")} case studies
+            </span>
+          </div>
+        </Reveal>
+        <div className="grid sm:grid-cols-2 gap-x-8 gap-y-16">
+          {projects.map((project, i) => (
+            <ProjectCard project={project} index={i} key={project.slug} />
+          ))}
+        </div>
+
+        <Reveal>
+          <div className="mt-20 pt-10 border-t border-line">
+            <p className="font-mono text-xs uppercase tracking-widest text-muted mb-6">
+              In progress
+            </p>
+            <div className="flex flex-wrap gap-x-10 gap-y-4">
+              {comingSoon.map((p) => (
+                <div key={p.title} className="flex items-baseline gap-3">
+                  <span className="font-display text-xl text-muted">
+                    {p.title}
+                  </span>
+                  <span className="text-xs text-muted/70">{p.client}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 md:px-8 pb-24 md:pb-32">
+        <Reveal>
+          <div className="rounded-3xl bg-ink text-white px-8 py-14 md:px-14 md:py-20 flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-white/50 mb-4">
+                Also teaching
+              </p>
+              <h2 className="font-display text-2xl sm:text-3xl max-w-md leading-snug">
+                Adjunct professor at Western Washington University, teaching
+                AI design tools and generative engine optimization.
+              </h2>
+            </div>
+            <MagneticButton href={`mailto:${contact.email}`} tone="light">
+              Get in touch
+            </MagneticButton>
+          </div>
+        </Reveal>
+      </section>
     </div>
   );
 }
