@@ -3,7 +3,7 @@ import ProjectCard from "@/components/ProjectCard";
 import StatCounter from "@/components/StatCounter";
 import MagneticButton from "@/components/MagneticButton";
 import { projects, comingSoon } from "@/lib/projects";
-import { contact } from "@/lib/experience";
+import { contact, slowMoneyClub } from "@/lib/experience";
 
 const headlineStats = [
   { value: "95%+", label: "over annual sales target driven by a feature I led" },
@@ -96,22 +96,51 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 md:px-8 pb-24 md:pb-32">
-        <Reveal>
-          <div className="rounded-3xl bg-ink text-white px-8 py-14 md:px-14 md:py-20 flex flex-col md:flex-row md:items-center md:justify-between gap-10">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-white/50 mb-4">
-                Also teaching
-              </p>
-              <h2 className="font-display text-2xl sm:text-3xl max-w-md leading-snug">
-                Adjunct professor at Western Washington University, teaching
-                AI design tools and generative engine optimization.
-              </h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <Reveal>
+            <div className="h-full rounded-3xl bg-ink text-white px-8 py-12 md:px-10 md:py-14 flex flex-col justify-between gap-10">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-white/50 mb-4">
+                  Also teaching
+                </p>
+                <h2 className="font-display text-2xl leading-snug">
+                  Adjunct professor at Western Washington University,
+                  teaching AI design tools and generative engine
+                  optimization.
+                </h2>
+              </div>
+              <MagneticButton href={`mailto:${contact.email}`} tone="light">
+                Get in touch
+              </MagneticButton>
             </div>
-            <MagneticButton href={`mailto:${contact.email}`} tone="light">
-              Get in touch
-            </MagneticButton>
-          </div>
-        </Reveal>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="h-full rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-12 md:px-10 md:py-14 flex flex-col justify-between gap-10">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+                  Also building — {slowMoneyClub.handle}
+                </p>
+                <h2 className="font-display text-2xl leading-snug text-ink">
+                  {slowMoneyClub.name}, a finance and investing education
+                  project for women, queer folks, and anyone else who
+                  doesn&apos;t usually get a seat at the financial table.
+                </h2>
+              </div>
+              <div className="flex flex-wrap items-center gap-4">
+                <MagneticButton href={slowMoneyClub.instagram} external>
+                  Instagram ↗
+                </MagneticButton>
+                <MagneticButton
+                  href={slowMoneyClub.tiktok}
+                  external
+                  tone="light"
+                >
+                  TikTok ↗
+                </MagneticButton>
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </section>
     </div>
   );

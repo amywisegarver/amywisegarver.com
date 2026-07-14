@@ -1,5 +1,22 @@
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import type { Block } from "@/lib/projects";
+
+const DIMENSIONS: Record<string, { w: number; h: number }> = {
+  "/images/scenes/shot-1.png": { w: 750, h: 1024 },
+  "/images/scenes/shot-2.png": { w: 1024, h: 683 },
+  "/images/scenes/shot-3.jpg": { w: 1024, h: 620 },
+  "/images/scenes/shot-4.png": { w: 1024, h: 716 },
+  "/images/scenes/shot-5.png": { w: 584, h: 1024 },
+  "/images/scenes/shot-6.png": { w: 583, h: 1024 },
+  "/images/scenes/shot-7.png": { w: 583, h: 1024 },
+  "/images/scenes/shot-9.png": { w: 1024, h: 490 },
+  "/images/window-tool/shot-1.jpeg": { w: 592, h: 631 },
+};
+
+function dims(src: string) {
+  return DIMENSIONS[src] ?? { w: 1024, h: 683 };
+}
 
 function Num({ n }: { n: number }) {
   return (
@@ -90,6 +107,17 @@ function CompareBlock({
             {block.before.title}
           </p>
           <p className="text-muted leading-relaxed">{block.before.body}</p>
+          {block.before.image && (
+            <div className="mt-5 rounded-lg overflow-hidden border border-line">
+              <Image
+                src={block.before.image}
+                alt={block.before.title}
+                width={dims(block.before.image).w}
+                height={dims(block.before.image).h}
+                className="w-full h-auto"
+              />
+            </div>
+          )}
         </div>
       </Reveal>
       <Reveal delay={0.08}>
@@ -98,9 +126,92 @@ function CompareBlock({
             {block.after.title}
           </p>
           <p className="text-ink/80 leading-relaxed">{block.after.body}</p>
+          {block.after.image && (
+            <div className="mt-5 rounded-lg overflow-hidden border border-line">
+              <Image
+                src={block.after.image}
+                alt={block.after.title}
+                width={dims(block.after.image).w}
+                height={dims(block.after.image).h}
+                className="w-full h-auto"
+              />
+            </div>
+          )}
         </div>
       </Reveal>
     </div>
+  );
+}
+
+function ImageBlock({ block }: { block: Extract<Block, { type: "image" }> }) {
+  const { w, h } = dims(block.src);
+  return (
+    <Reveal className="max-w-3xl">
+      <div className="rounded-2xl overflow-hidden border border-line bg-surface-raised/40">
+        <Image
+          src={block.src}
+          alt={block.caption ?? ""}
+          width={w}
+          height={h}
+          className="w-full h-auto"
+          sizes="(min-width: 1024px) 768px, 100vw"
+        />
+      </div>
+      {block.caption && (
+        <p className="mt-3 text-sm text-muted">{block.caption}</p>
+      )}
+    </Reveal>
+  );
+}
+
+function GalleryBlock({
+  block,
+}: {
+  block: Extract<Block, { type: "gallery" }>;
+}) {
+  return (
+    <div className="grid sm:grid-cols-2 gap-6 max-w-3xl">
+      {block.images.map((img, i) => {
+        const { w, h } = dims(img.src);
+        return (
+          <Reveal key={img.src} delay={i * 0.06}>
+            <div className="rounded-2xl overflow-hidden border border-line bg-surface-raised/40">
+              <Image
+                src={img.src}
+                alt={img.caption ?? ""}
+                width={w}
+                height={h}
+                className="w-full h-auto"
+                sizes="(min-width: 640px) 384px, 100vw"
+              />
+            </div>
+            {img.caption && (
+              <p className="mt-3 text-sm text-muted">{img.caption}</p>
+            )}
+          </Reveal>
+        );
+      })}
+    </div>
+  );
+}
+
+function VideoBlock({ block }: { block: Extract<Block, { type: "video" }> }) {
+  return (
+    <Reveal className="max-w-3xl">
+      <div className="rounded-2xl overflow-hidden border border-line bg-ink">
+        <video
+          src={block.src}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-auto"
+        />
+      </div>
+      {block.caption && (
+        <p className="mt-3 text-sm text-muted">{block.caption}</p>
+      )}
+    </Reveal>
   );
 }
 
@@ -189,6 +300,12 @@ export default function BlockRenderer({ block }: { block: Block }) {
       return <DecisionsBlock block={block} />;
     case "outcomes":
       return <OutcomesBlock block={block} />;
+    case "image":
+      return <ImageBlock block={block} />;
+    case "gallery":
+      return <GalleryBlock block={block} />;
+    case "video":
+      return <VideoBlock block={block} />;
     default:
       return null;
   }

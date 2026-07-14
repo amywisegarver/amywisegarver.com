@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
-import { experience, contact } from "@/lib/experience";
+import { experience, contact, slowMoneyClub } from "@/lib/experience";
 
 export const metadata: Metadata = {
   title: "About — Amy Wisegarver",
@@ -70,6 +70,45 @@ export default function About() {
       </section>
 
       <section className="mx-auto max-w-3xl px-6 md:px-8 mt-24">
+        <Reveal>
+          <p className="font-mono text-xs uppercase tracking-widest text-muted mb-2">
+            Also building
+          </p>
+          <div className="rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-10 sm:py-12">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+              <div>
+                <h2 className="font-display text-2xl text-ink mb-1">
+                  {slowMoneyClub.name}
+                </h2>
+                <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+                  {slowMoneyClub.handle}
+                </p>
+                <p className="text-muted leading-relaxed max-w-md">
+                  {slowMoneyClub.description}
+                </p>
+              </div>
+              <div className="shrink-0">
+                <p className="font-display text-3xl text-ink">
+                  {slowMoneyClub.stat.value}
+                </p>
+                <p className="text-sm text-muted whitespace-nowrap">
+                  {slowMoneyClub.stat.label}
+                </p>
+              </div>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <MagneticButton href={slowMoneyClub.instagram} external>
+                Instagram ↗
+              </MagneticButton>
+              <MagneticButton href={slowMoneyClub.tiktok} external tone="light">
+                TikTok ↗
+              </MagneticButton>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-6 md:px-8 mt-16">
         <Reveal>
           <div className="rounded-3xl border border-line bg-surface-raised/60 px-8 py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>

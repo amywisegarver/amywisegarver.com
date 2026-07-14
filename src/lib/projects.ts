@@ -11,8 +11,8 @@ export type Block =
   | { type: "quote"; text: string; attribution?: string }
   | {
       type: "compare";
-      before: { title: string; body: string };
-      after: { title: string; body: string };
+      before: { title: string; body: string; image?: string };
+      after: { title: string; body: string; image?: string };
     }
   | {
       type: "decisions";
@@ -20,7 +20,10 @@ export type Block =
       intro?: string;
       items: { title: string; why?: string; body: string[] }[];
     }
-  | { type: "outcomes"; heading: string; items: string[] };
+  | { type: "outcomes"; heading: string; items: string[] }
+  | { type: "image"; src: string; caption?: string }
+  | { type: "gallery"; images: { src: string; caption?: string }[] }
+  | { type: "video"; src: string; caption?: string };
 
 export type Project = {
   slug: string;
@@ -73,6 +76,11 @@ export const projects: Project[] = [
         ],
       },
       {
+        type: "image",
+        src: "/images/scenes/shot-1.png",
+        caption: "Marvin's connected windows and doors — the hardware Scenes automates.",
+      },
+      {
         type: "numbered",
         heading: "What problem were we solving?",
         intro:
@@ -104,6 +112,11 @@ export const projects: Project[] = [
         text: "I just want to wake up to fresh air coming in through my bedroom windows.",
       },
       {
+        type: "image",
+        src: "/images/scenes/shot-2.png",
+        caption: "A scheduled Scene opening the bedroom window and surfacing a quiet in-app notification.",
+      },
+      {
         type: "numbered",
         heading: "We needed to answer three questions",
         items: [
@@ -131,6 +144,13 @@ export const projects: Project[] = [
           { title: "Reduce cognitive load", body: "Remove steps and jargon that slowed people down." },
           { title: "Add guardrails", body: "Prevent unsafe or conflicting configurations by design." },
           { title: "Clarify timing", body: "Make it obvious how and when a scene would run." },
+        ],
+      },
+      {
+        type: "gallery",
+        images: [
+          { src: "/images/scenes/shot-5.png", caption: "An early scene creation screen" },
+          { src: "/images/scenes/shot-6.png", caption: "The Scenes dashboard" },
         ],
       },
       {
@@ -168,6 +188,33 @@ export const projects: Project[] = [
             ],
           },
         ],
+      },
+      {
+        type: "video",
+        src: "/images/scenes/demo-2.mp4",
+        caption: "The full scene creation flow — name, product actions, then triggers.",
+      },
+      {
+        type: "gallery",
+        images: [
+          { src: "/images/scenes/shot-4.png", caption: "Configuring weather-based triggers" },
+          { src: "/images/scenes/shot-7.png", caption: "A plain-language explainer for how weather triggers work" },
+        ],
+      },
+      {
+        type: "image",
+        src: "/images/scenes/shot-9.png",
+        caption: "One pattern, scaled across airflow, lights, privacy glass, and shades.",
+      },
+      {
+        type: "video",
+        src: "/images/scenes/demo-1.mp4",
+        caption: "Selecting product actions when building a scene.",
+      },
+      {
+        type: "image",
+        src: "/images/scenes/shot-3.jpg",
+        caption: "Marvin Connected Home, in the wild.",
       },
       {
         type: "outcomes",
@@ -239,11 +286,17 @@ export const projects: Project[] = [
         before: {
           title: "Before: Order Management System (OMS)",
           body: "Text-based configuration with limited visual feedback and complex rule logic.",
+          image: "/images/window-tool/shot-1.jpeg",
         },
         after: {
           title: "After: Window Visualizer Tool",
           body: "A visual, interactive experience with the same product rules, validation, and data as OMS.",
         },
+      },
+      {
+        type: "video",
+        src: "/images/window-tool/demo-1.mp4",
+        caption: "The Window Visualizer Tool in action.",
       },
       {
         type: "numbered",
