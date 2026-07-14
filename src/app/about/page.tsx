@@ -10,8 +10,9 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <div className="pt-40 pb-28 md:pt-48 md:pb-36">
-      <section className="mx-auto max-w-3xl px-6 md:px-8">
+    <div className="relative pt-40 pb-28 md:pt-48 md:pb-36 overflow-hidden">
+      <div className="pointer-events-none absolute -top-24 right-[-10%] h-[420px] w-[420px] rounded-full bg-accent-soft/60 blur-3xl" />
+      <section className="mx-auto max-w-3xl px-6 md:px-8 relative">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-widest text-muted mb-6">
             About

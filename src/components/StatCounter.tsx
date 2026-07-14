@@ -48,7 +48,14 @@ export default function StatCounter({ stats }: { stats: Stat[] }) {
           <dd className="font-display text-4xl sm:text-5xl text-ink">
             <AnimatedValue value={stat.value} />
           </dd>
-          <dd className="text-sm text-muted leading-snug">{stat.label}</dd>
+          <dd className="text-sm text-muted leading-snug">
+            {stat.label}
+            {stat.source && (
+              <span className="block text-xs text-muted/70 mt-1">
+                — {stat.source}
+              </span>
+            )}
+          </dd>
         </div>
       ))}
     </dl>

@@ -7,8 +7,16 @@ import { projects, comingSoon } from "@/lib/projects";
 import { slowMoneyClub } from "@/lib/experience";
 
 const headlineStats = [
-  { value: "195%", label: "of the annual sales target, driven by a feature I led" },
-  { value: "3 → 9", label: "core features scaled on one platform" },
+  {
+    value: "200%",
+    label: "the annual sales target, driven by a feature I led",
+    source: "Marvin",
+  },
+  {
+    value: "3 → 9",
+    label: "core features scaled on native iOS and Android app",
+    source: "Marvin",
+  },
   { value: "6+", label: "years designing end-to-end product experiences" },
 ];
 

@@ -7,12 +7,12 @@ type Props = {
 
 export default function TikTokEmbed({ url, videoId }: Props) {
   return (
-    <div className="mx-auto w-full max-w-[325px]">
+    <div className="mx-auto" style={{ zoom: 0.72, maxWidth: 325 }}>
       <blockquote
         className="tiktok-embed"
         cite={url}
         data-video-id={videoId}
-        style={{ maxWidth: "325px", minWidth: "260px" }}
+        style={{ maxWidth: "325px", minWidth: "325px" }}
       >
         <section />
       </blockquote>
