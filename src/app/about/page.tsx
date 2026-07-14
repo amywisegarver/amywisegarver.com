@@ -63,9 +63,16 @@ export default function About() {
                   </p>
                   <p className="text-muted">{item.role}</p>
                 </div>
-                <p className="font-mono text-xs uppercase tracking-widest text-muted whitespace-nowrap">
-                  {item.period}
-                </p>
+                <div className="sm:text-right">
+                  <p className="font-mono text-xs uppercase tracking-widest text-muted whitespace-nowrap">
+                    {item.period}
+                  </p>
+                  {item.note && (
+                    <p className="mt-1 text-xs text-muted/70 whitespace-nowrap">
+                      {item.note}
+                    </p>
+                  )}
+                </div>
               </li>
             </Reveal>
           ))}

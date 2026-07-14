@@ -1,8 +1,16 @@
-export const experience = [
+type ExperienceItem = {
+  company: string;
+  role: string;
+  period: string;
+  note?: string;
+};
+
+export const experience: ExperienceItem[] = [
   {
     company: "Consumer Reports",
     role: "Senior Product Designer",
     period: "January 2026 — June 2026",
+    note: "6-month contract",
   },
   {
     company: "Marvin",
