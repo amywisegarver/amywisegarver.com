@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
+import TikTokEmbed from "@/components/TikTokEmbed";
 import { experience, slowMoneyClub } from "@/lib/experience";
 
 export const metadata: Metadata = {
@@ -84,7 +85,7 @@ export default function About() {
           <p className="font-mono text-xs uppercase tracking-widest text-muted mb-2">
             Also building
           </p>
-          <div className="rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-10 sm:py-12">
+          <div className="rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-10 sm:py-12 grid sm:grid-cols-[1fr_auto] gap-10 items-center">
             <div>
               <h2 className="font-display text-2xl text-ink mb-1">
                 {slowMoneyClub.name}
@@ -95,15 +96,19 @@ export default function About() {
               <p className="text-muted leading-relaxed max-w-md">
                 {slowMoneyClub.description}
               </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <MagneticButton href={slowMoneyClub.instagram} external>
+                  Instagram ↗
+                </MagneticButton>
+                <MagneticButton href={slowMoneyClub.tiktok} external tone="light">
+                  TikTok ↗
+                </MagneticButton>
+              </div>
             </div>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <MagneticButton href={slowMoneyClub.instagram} external>
-                Instagram ↗
-              </MagneticButton>
-              <MagneticButton href={slowMoneyClub.tiktok} external tone="light">
-                TikTok ↗
-              </MagneticButton>
-            </div>
+            <TikTokEmbed
+              url={slowMoneyClub.featuredVideo.url}
+              videoId={slowMoneyClub.featuredVideo.id}
+            />
           </div>
         </Reveal>
       </section>

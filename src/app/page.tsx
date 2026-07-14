@@ -2,11 +2,12 @@ import Reveal from "@/components/Reveal";
 import ProjectCard from "@/components/ProjectCard";
 import StatCounter from "@/components/StatCounter";
 import MagneticButton from "@/components/MagneticButton";
+import TikTokEmbed from "@/components/TikTokEmbed";
 import { projects, comingSoon } from "@/lib/projects";
 import { slowMoneyClub } from "@/lib/experience";
 
 const headlineStats = [
-  { value: "2x", label: "the annual sales target, driven by a feature I led" },
+  { value: "195%", label: "of the annual sales target, driven by a feature I led" },
   { value: "3 → 9", label: "core features scaled on one platform" },
   { value: "6+", label: "years designing end-to-end product experiences" },
 ];
@@ -97,23 +98,9 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 md:px-8 pb-24 md:pb-32">
-        <div className="grid md:grid-cols-2 gap-6">
-          <Reveal>
-            <div className="h-full rounded-3xl bg-ink text-white px-8 py-12 md:px-10 md:py-14 flex flex-col justify-center gap-10">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-white/50 mb-4">
-                  Also teaching
-                </p>
-                <h2 className="font-display text-2xl leading-snug">
-                  Adjunct professor at Western Washington University,
-                  teaching AI design tools and generative engine
-                  optimization.
-                </h2>
-              </div>
-            </div>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <div className="h-full rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-12 md:px-10 md:py-14 flex flex-col justify-between gap-10">
+        <Reveal>
+          <div className="rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-12 md:px-10 md:py-14 grid md:grid-cols-[1fr_auto] gap-10 items-center">
+            <div className="flex flex-col justify-between gap-10 h-full">
               <div>
                 <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
                   Also building — {slowMoneyClub.handle}
@@ -137,8 +124,12 @@ export default function Home() {
                 </MagneticButton>
               </div>
             </div>
-          </Reveal>
-        </div>
+            <TikTokEmbed
+              url={slowMoneyClub.featuredVideo.url}
+              videoId={slowMoneyClub.featuredVideo.id}
+            />
+          </div>
+        </Reveal>
       </section>
     </div>
   );

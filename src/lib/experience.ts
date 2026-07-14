@@ -44,4 +44,8 @@ export const slowMoneyClub = {
     "A finance and investing education project for women, queer folks, and anyone else who doesn't usually get a seat at the financial table — easy, accessible money and investing tips, no gatekeeping.",
   instagram: "https://www.instagram.com/theslowmoneyclub/",
   tiktok: "https://www.tiktok.com/@theslowmoneyclub",
+  featuredVideo: {
+    url: "https://www.tiktok.com/@theslowmoneyclub/video/7658552348268072206",
+    id: "7658552348268072206",
+  },
 };
