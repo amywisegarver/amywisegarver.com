@@ -1,7 +1,4 @@
-"use client";
-
-import { useRef, useState, type ReactNode, type MouseEvent } from "react";
-import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 
 type Props = {
   href: string;
@@ -16,38 +13,19 @@ export default function MagneticButton({
   tone = "dark",
   external = false,
 }: Props) {
-  const ref = useRef<HTMLAnchorElement>(null);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-
-  const handleMove = (e: MouseEvent<HTMLAnchorElement>) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    setPos({ x: x * 0.35, y: y * 0.45 });
-  };
-
-  const reset = () => setPos({ x: 0, y: 0 });
-
   const toneClasses =
     tone === "light"
-      ? "bg-white text-ink"
-      : "bg-ink text-white";
+      ? "bg-white text-ink hover:bg-surface-raised"
+      : "bg-ink text-white hover:bg-ink-soft";
 
   return (
-    <motion.a
-      ref={ref}
+    <a
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      onMouseMove={handleMove}
-      onMouseLeave={reset}
-      animate={{ x: pos.x, y: pos.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 12, mass: 0.4 }}
-      className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium ${toneClasses} shadow-[0_1px_0_rgba(0,0,0,0.04)]`}
+      className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors duration-200 shadow-[0_1px_0_rgba(0,0,0,0.04)] ${toneClasses}`}
     >
       {children}
-    </motion.a>
+    </a>
   );
 }

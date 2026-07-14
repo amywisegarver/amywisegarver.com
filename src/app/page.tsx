@@ -3,12 +3,12 @@ import ProjectCard from "@/components/ProjectCard";
 import StatCounter from "@/components/StatCounter";
 import MagneticButton from "@/components/MagneticButton";
 import { projects, comingSoon } from "@/lib/projects";
-import { contact, slowMoneyClub } from "@/lib/experience";
+import { slowMoneyClub } from "@/lib/experience";
 
 const headlineStats = [
-  { value: "95%+", label: "over annual sales target driven by a feature I led" },
+  { value: "2x", label: "the annual sales target, driven by a feature I led" },
   { value: "3 → 9", label: "core features scaled on one platform" },
-  { value: "5+", label: "years designing end-to-end product experiences" },
+  { value: "6+", label: "years designing end-to-end product experiences" },
 ];
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6 md:px-8 relative">
           <Reveal>
             <p className="font-mono text-xs uppercase tracking-widest text-muted mb-6">
-              Senior Product Designer · Seattle
+              Senior Product Designer · Bellingham, WA
             </p>
           </Reveal>
           <Reveal delay={0.05}>
@@ -30,11 +30,12 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-8 text-lg text-muted max-w-xl leading-relaxed">
-              Five-plus years shaping intuitive, trustworthy product
-              experiences across complex hardware, IoT, and web platforms —
-              from smart-home automations that control real locks and
-              windows, to specification tools architects stake real projects
-              on. Now bringing that same rigor to fintech.
+              Six-plus years shaping intuitive, trustworthy product
+              experiences across complex hardware, IoT, native iOS and
+              Android apps, and web platforms — from smart-home automations
+              that control real locks and windows, to specification tools
+              architects stake real projects on. Now bringing that same
+              rigor to fintech.
             </p>
           </Reveal>
           <Reveal delay={0.25}>
@@ -98,7 +99,7 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 md:px-8 pb-24 md:pb-32">
         <div className="grid md:grid-cols-2 gap-6">
           <Reveal>
-            <div className="h-full rounded-3xl bg-ink text-white px-8 py-12 md:px-10 md:py-14 flex flex-col justify-between gap-10">
+            <div className="h-full rounded-3xl bg-ink text-white px-8 py-12 md:px-10 md:py-14 flex flex-col justify-center gap-10">
               <div>
                 <p className="font-mono text-xs uppercase tracking-widest text-white/50 mb-4">
                   Also teaching
@@ -109,9 +110,6 @@ export default function Home() {
                   optimization.
                 </h2>
               </div>
-              <MagneticButton href={`mailto:${contact.email}`} tone="light">
-                Get in touch
-              </MagneticButton>
             </div>
           </Reveal>
           <Reveal delay={0.08}>

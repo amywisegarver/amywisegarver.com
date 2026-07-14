@@ -37,12 +37,12 @@ export default function Nav() {
       }`}
     >
       <nav className="mx-auto max-w-6xl px-6 md:px-8 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-baseline gap-2 group whitespace-nowrap shrink-0">
+        <Link href="/" className="flex items-center gap-2.5 group whitespace-nowrap shrink-0">
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-white text-[11px] font-display tracking-tight group-hover:bg-accent transition-colors">
+            AW
+          </span>
           <span className="font-display text-base sm:text-lg tracking-tight text-ink group-hover:text-accent transition-colors">
             Amy Wisegarver
-          </span>
-          <span className="hidden sm:inline text-xs font-mono uppercase tracking-widest text-muted">
-            Product Designer
           </span>
         </Link>
         <ul className="flex items-center gap-0.5 sm:gap-1">

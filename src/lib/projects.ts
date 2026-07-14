@@ -63,7 +63,7 @@ export const projects: Project[] = [
       "Partnered closely with engineering and development on feasibility and handoff",
     ],
     stats: [
-      { value: "95%+", label: "over annual sales target" },
+      { value: "2x", label: "the annual sales target" },
       { value: "3 → 9", label: "core features scaled" },
       { value: "4", label: "rounds of iterative testing" },
     ],
@@ -223,7 +223,7 @@ export const projects: Project[] = [
           "Scene creation became significantly faster and easier, reducing cognitive load and decision friction",
           "Users gained confidence in automated behavior through clearer triggers and predictable patterns",
           "The system now scales naturally as new products, triggers, and security capabilities are added",
-          "Dealers gained a compelling selling tool, contributing to a 95%+ increase over the annual sales target",
+          "Dealers gained a compelling selling tool, helping the team exceed the annual sales target by 2x",
         ],
       },
     ],

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
-import { experience, contact, slowMoneyClub } from "@/lib/experience";
+import { experience, slowMoneyClub } from "@/lib/experience";
 
 export const metadata: Metadata = {
   title: "About — Amy Wisegarver",
@@ -15,14 +15,17 @@ export default function About() {
           <p className="font-mono text-xs uppercase tracking-widest text-muted mb-6">
             About
           </p>
-          <h1 className="font-display text-4xl sm:text-5xl leading-tight text-ink mb-10">
+          <h1 className="font-display text-4xl sm:text-5xl leading-tight text-ink mb-4">
             Hi there, I&apos;m Amy.
           </h1>
+          <p className="font-mono text-xs uppercase tracking-widest text-muted mb-10">
+            Bellingham, WA · Open to remote &amp; Seattle hybrid
+          </p>
         </Reveal>
         <Reveal delay={0.08}>
           <div className="space-y-6 text-lg text-muted leading-relaxed">
             <p>
-              I&apos;m a Senior Product Designer with 5+ years of end-to-end
+              I&apos;m a Senior Product Designer with 6+ years of end-to-end
               UX experience, progressing from agency product roles into
               leading all UX/UI design and design strategy for the Marvin
               Connected Home app.
@@ -31,9 +34,9 @@ export default function About() {
               I have a proven track record of shipping complex features
               quickly, improving design and development efficiency, and
               delivering measurable business and operational impact across
-              mobile, IoT, and web platforms — the kind of high-stakes,
-              trust-sensitive systems that don&apos;t leave much room for
-              guesswork.
+              native iOS and Android apps, IoT, and web platforms — the
+              kind of high-stakes, trust-sensitive systems that don&apos;t
+              leave much room for guesswork.
             </p>
             <p>
               Alongside my product work, I serve as an adjunct professor of
@@ -53,8 +56,8 @@ export default function About() {
         <ol className="space-y-0">
           {experience.map((item, i) => (
             <Reveal key={item.company} delay={i * 0.06}>
-              <li className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 py-6 border-t border-line first:border-t-0 sm:first:border-t sm:first:py-0 sm:first:pt-6">
-                <div>
+              <li className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 pt-6 pb-8 border-t border-line first:border-t-0 sm:first:border-t sm:first:pt-6">
+                <div className="space-y-1.5">
                   <p className="font-display text-xl text-ink">
                     {item.company}
                   </p>
@@ -75,26 +78,16 @@ export default function About() {
             Also building
           </p>
           <div className="rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-10 sm:py-12">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
-              <div>
-                <h2 className="font-display text-2xl text-ink mb-1">
-                  {slowMoneyClub.name}
-                </h2>
-                <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
-                  {slowMoneyClub.handle}
-                </p>
-                <p className="text-muted leading-relaxed max-w-md">
-                  {slowMoneyClub.description}
-                </p>
-              </div>
-              <div className="shrink-0">
-                <p className="font-display text-3xl text-ink">
-                  {slowMoneyClub.stat.value}
-                </p>
-                <p className="text-sm text-muted whitespace-nowrap">
-                  {slowMoneyClub.stat.label}
-                </p>
-              </div>
+            <div>
+              <h2 className="font-display text-2xl text-ink mb-1">
+                {slowMoneyClub.name}
+              </h2>
+              <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+                {slowMoneyClub.handle}
+              </p>
+              <p className="text-muted leading-relaxed max-w-md">
+                {slowMoneyClub.description}
+              </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-4">
               <MagneticButton href={slowMoneyClub.instagram} external>
@@ -104,22 +97,6 @@ export default function About() {
                 TikTok ↗
               </MagneticButton>
             </div>
-          </div>
-        </Reveal>
-      </section>
-
-      <section className="mx-auto max-w-3xl px-6 md:px-8 mt-16">
-        <Reveal>
-          <div className="rounded-3xl border border-line bg-surface-raised/60 px-8 py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-muted mb-2">
-                Get in touch
-              </p>
-              <p className="font-display text-xl text-ink">{contact.email}</p>
-            </div>
-            <MagneticButton href={contact.linkedin} external>
-              LinkedIn ↗
-            </MagneticButton>
           </div>
         </Reveal>
       </section>

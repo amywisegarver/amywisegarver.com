@@ -54,9 +54,12 @@ export default function Contact() {
               <p className="font-mono text-xs uppercase tracking-widest text-muted">
                 Location
               </p>
-              <p className="font-display text-2xl sm:text-3xl text-ink">
-                {contact.location}
-              </p>
+              <div>
+                <p className="font-display text-2xl sm:text-3xl text-ink">
+                  {contact.location}
+                </p>
+                <p className="mt-1 text-sm text-muted">{contact.openTo}</p>
+              </div>
             </div>
           </Reveal>
           <Reveal delay={0.15}>
