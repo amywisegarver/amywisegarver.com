@@ -2,20 +2,22 @@ import Reveal from "@/components/Reveal";
 import ProjectCard from "@/components/ProjectCard";
 import StatCounter from "@/components/StatCounter";
 import MagneticButton from "@/components/MagneticButton";
-import TikTokEmbed from "@/components/TikTokEmbed";
-import { projects, comingSoon } from "@/lib/projects";
+import { projects } from "@/lib/projects";
 import { slowMoneyClub } from "@/lib/experience";
 
 const headlineStats = [
   {
     value: "200%",
     label: "the annual sales target, driven by a feature I led",
-    source: "Marvin",
+    link: { text: "feature", href: "/work/scenes-automations" },
   },
   {
     value: "3 → 9",
     label: "core features scaled on native iOS and Android app",
-    source: "Marvin",
+    link: {
+      text: "native iOS and Android app",
+      href: "/work/scenes-automations",
+    },
   },
   { value: "6+", label: "years designing end-to-end product experiences" },
 ];
@@ -85,57 +87,31 @@ export default function Home() {
             <ProjectCard project={project} index={i} key={project.slug} />
           ))}
         </div>
-
-        <Reveal>
-          <div className="mt-20 pt-10 border-t border-line">
-            <p className="font-mono text-xs uppercase tracking-widest text-muted mb-6">
-              In progress
-            </p>
-            <div className="flex flex-wrap gap-x-10 gap-y-4">
-              {comingSoon.map((p) => (
-                <div key={p.title} className="flex items-baseline gap-3">
-                  <span className="font-display text-xl text-muted">
-                    {p.title}
-                  </span>
-                  <span className="text-xs text-muted/70">{p.client}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 md:px-8 pb-24 md:pb-32">
         <Reveal>
-          <div className="rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-12 md:px-10 md:py-14 grid md:grid-cols-[1fr_auto] gap-10 items-center">
-            <div className="flex flex-col justify-between gap-10 h-full">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
-                  Also building — {slowMoneyClub.handle}
-                </p>
-                <h2 className="font-display text-2xl leading-snug text-ink">
-                  {slowMoneyClub.name}, a finance and investing education
-                  project for women, queer folks, and anyone else who
-                  doesn&apos;t usually get a seat at the financial table.
-                </h2>
-              </div>
-              <div className="flex flex-wrap items-center gap-4">
-                <MagneticButton href={slowMoneyClub.instagram} external>
-                  Instagram ↗
-                </MagneticButton>
-                <MagneticButton
-                  href={slowMoneyClub.tiktok}
-                  external
-                  tone="light"
-                >
-                  TikTok ↗
-                </MagneticButton>
-              </div>
+          <div className="rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-12 md:px-10 md:py-14">
+            <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+              Also building — {slowMoneyClub.handle}
+            </p>
+            <h2 className="font-display text-2xl leading-snug text-ink max-w-2xl">
+              {slowMoneyClub.name}, a finance and investing education
+              project for women, queer folks, and anyone else who
+              doesn&apos;t usually get a seat at the financial table.
+            </h2>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <MagneticButton href={slowMoneyClub.instagram} external>
+                Instagram ↗
+              </MagneticButton>
+              <MagneticButton
+                href={slowMoneyClub.tiktok}
+                external
+                tone="light"
+              >
+                TikTok ↗
+              </MagneticButton>
             </div>
-            <TikTokEmbed
-              url={slowMoneyClub.featuredVideo.url}
-              videoId={slowMoneyClub.featuredVideo.id}
-            />
           </div>
         </Reveal>
       </section>

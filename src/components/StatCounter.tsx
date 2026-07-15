@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
+import Link from "next/link";
 import type { Stat } from "@/lib/projects";
 
 const NUMERIC = /^(\D*?)(\d+(?:\.\d+)?)(.*)$/;
@@ -39,6 +40,26 @@ function AnimatedValue({ value }: { value: string }) {
   return <span ref={ref}>{display}</span>;
 }
 
+function Label({ stat }: { stat: Stat }) {
+  if (!stat.link) return <>{stat.label}</>;
+  const idx = stat.label.indexOf(stat.link.text);
+  if (idx === -1) return <>{stat.label}</>;
+  const before = stat.label.slice(0, idx);
+  const after = stat.label.slice(idx + stat.link.text.length);
+  return (
+    <>
+      {before}
+      <Link
+        href={stat.link.href}
+        className="text-ink underline decoration-line underline-offset-4 hover:decoration-accent transition-colors"
+      >
+        {stat.link.text}
+      </Link>
+      {after}
+    </>
+  );
+}
+
 export default function StatCounter({ stats }: { stats: Stat[] }) {
   return (
     <dl className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-10">
@@ -49,12 +70,7 @@ export default function StatCounter({ stats }: { stats: Stat[] }) {
             <AnimatedValue value={stat.value} />
           </dd>
           <dd className="text-sm text-muted leading-snug">
-            {stat.label}
-            {stat.source && (
-              <span className="block text-xs text-muted/70 mt-1">
-                — {stat.source}
-              </span>
-            )}
+            <Label stat={stat} />
           </dd>
         </div>
       ))}

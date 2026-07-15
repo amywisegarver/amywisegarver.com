@@ -1,4 +1,8 @@
-export type Stat = { value: string; label: string; source?: string };
+export type Stat = {
+  value: string;
+  label: string;
+  link?: { text: string; href: string };
+};
 
 export type Block =
   | { type: "text"; heading: string; paragraphs: string[] }
@@ -37,12 +41,6 @@ export type Project = {
   role: string[];
   stats: Stat[];
   blocks: Block[];
-};
-
-export type ComingSoonProject = {
-  title: string;
-  client: string;
-  status: "soon";
 };
 
 export const projects: Project[] = [
@@ -414,11 +412,6 @@ export const projects: Project[] = [
       },
     ],
   },
-];
-
-export const comingSoon: ComingSoonProject[] = [
-  { title: "CLiC Glass x MCH", client: "Marvin Connected Home", status: "soon" },
-  { title: "Zeeks Pizza Website", client: "Mentor Creative Group", status: "soon" },
 ];
 
 export function getProject(slug: string) {

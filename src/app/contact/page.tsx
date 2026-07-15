@@ -39,19 +39,6 @@ export default function Contact() {
           <Reveal delay={0.05}>
             <div className="py-8 grid sm:grid-cols-[140px_1fr] gap-2 sm:gap-8 items-center">
               <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                Phone
-              </p>
-              <a
-                href={`tel:${contact.phone.replace(/\s+/g, "")}`}
-                className="font-display text-2xl sm:text-3xl text-ink hover:text-accent transition-colors"
-              >
-                {contact.phone}
-              </a>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="py-8 grid sm:grid-cols-[140px_1fr] gap-2 sm:gap-8 items-center">
-              <p className="font-mono text-xs uppercase tracking-widest text-muted">
                 Location
               </p>
               <div>
@@ -62,7 +49,7 @@ export default function Contact() {
               </div>
             </div>
           </Reveal>
-          <Reveal delay={0.15}>
+          <Reveal delay={0.1}>
             <div className="py-8 grid sm:grid-cols-[140px_1fr] gap-2 sm:gap-8 items-center">
               <p className="font-mono text-xs uppercase tracking-widest text-muted">
                 LinkedIn

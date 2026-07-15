@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
-import TikTokEmbed from "@/components/TikTokEmbed";
 import { experience, slowMoneyClub } from "@/lib/experience";
 
 export const metadata: Metadata = {
@@ -33,12 +32,12 @@ export default function About() {
               Connected Home app.
             </p>
             <p>
-              I have a proven track record of shipping complex features
-              quickly, improving design and development efficiency, and
-              delivering measurable business and operational impact across
-              native iOS and Android apps, IoT, and web platforms — the
-              kind of high-stakes, trust-sensitive systems that don&apos;t
-              leave much room for guesswork.
+              Outside of product work, I run The Slow Money Club, a finance
+              and investing education project born out of my own love of
+              demystifying money — turning investing, budgeting, and
+              long-term wealth-building into something approachable for
+              people who don&apos;t usually get a seat at the financial
+              table.
             </p>
             <p>
               Alongside my product work, I serve as an adjunct professor of
@@ -47,6 +46,27 @@ export default function About() {
               design tools and generative engine optimization — staying
               hands-on with how design practice is changing in real time.
             </p>
+          </div>
+        </Reveal>
+        <Reveal delay={0.12}>
+          <div className="mt-10 pt-8 border-t border-line">
+            <p className="font-mono text-xs uppercase tracking-widest text-muted mb-4">
+              Other skills
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "Certified backyard chicken wrangler",
+                "25 years of competitive tap dancing",
+                "Resident dahlia-growing whisperer",
+              ].map((skill) => (
+                <span
+                  key={skill}
+                  className="text-xs font-mono uppercase tracking-wide text-muted border border-line rounded-full px-3 py-1"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
         </Reveal>
       </section>
@@ -86,30 +106,24 @@ export default function About() {
           <p className="font-mono text-xs uppercase tracking-widest text-muted mb-2">
             Also building
           </p>
-          <div className="rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-10 sm:py-12 grid sm:grid-cols-[1fr_auto] gap-10 items-center">
-            <div>
-              <h2 className="font-display text-2xl text-ink mb-1">
-                {slowMoneyClub.name}
-              </h2>
-              <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
-                {slowMoneyClub.handle}
-              </p>
-              <p className="text-muted leading-relaxed max-w-md">
-                {slowMoneyClub.description}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <MagneticButton href={slowMoneyClub.instagram} external>
-                  Instagram ↗
-                </MagneticButton>
-                <MagneticButton href={slowMoneyClub.tiktok} external tone="light">
-                  TikTok ↗
-                </MagneticButton>
-              </div>
+          <div className="rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-10 sm:py-12">
+            <h2 className="font-display text-2xl text-ink mb-1">
+              {slowMoneyClub.name}
+            </h2>
+            <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+              {slowMoneyClub.handle}
+            </p>
+            <p className="text-muted leading-relaxed max-w-md">
+              {slowMoneyClub.description}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <MagneticButton href={slowMoneyClub.instagram} external>
+                Instagram ↗
+              </MagneticButton>
+              <MagneticButton href={slowMoneyClub.tiktok} external tone="light">
+                TikTok ↗
+              </MagneticButton>
             </div>
-            <TikTokEmbed
-              url={slowMoneyClub.featuredVideo.url}
-              videoId={slowMoneyClub.featuredVideo.id}
-            />
           </div>
         </Reveal>
       </section>
