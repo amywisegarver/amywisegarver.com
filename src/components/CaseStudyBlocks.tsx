@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import Reveal from "@/components/Reveal";
 import type { Block } from "@/lib/projects";
 
@@ -23,6 +24,28 @@ function Num({ n }: { n: number }) {
     <span className="font-mono text-xs text-accent">
       {String(n).padStart(2, "0")}
     </span>
+  );
+}
+
+export function ContainedSection({
+  id,
+  label,
+  children,
+}: {
+  id: string;
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <section
+      id={id}
+      className="scroll-mt-28 rounded-3xl border border-line bg-surface-raised/60 px-6 py-10 sm:px-10 sm:py-12"
+    >
+      <p className="font-mono text-xs uppercase tracking-widest text-accent mb-6">
+        {label}
+      </p>
+      {children}
+    </section>
   );
 }
 
@@ -221,7 +244,7 @@ function DecisionsBlock({
   block: Extract<Block, { type: "decisions" }>;
 }) {
   return (
-    <div className="max-w-3xl">
+    <div className="max-w-5xl">
       <Reveal>
         <h2 className="font-display text-2xl sm:text-3xl text-ink mb-5">
           {block.heading}
@@ -232,29 +255,76 @@ function DecisionsBlock({
           </p>
         )}
       </Reveal>
-      <div className="space-y-10">
-        {block.items.map((item, i) => (
-          <Reveal key={item.title} delay={i * 0.04}>
-            <div className="grid sm:grid-cols-[64px_1fr] gap-3 sm:gap-6">
+      <div className="space-y-14">
+        {block.items.map((item, i) => {
+          const text = (
+            <div>
               <Num n={i + 1} />
-              <div>
-                <h3 className="font-display text-xl text-ink mb-1">
-                  {item.title}
-                </h3>
-                {item.why && (
-                  <p className="text-sm italic text-accent mb-3">
-                    Why: {item.why}
-                  </p>
-                )}
-                <div className="space-y-3 text-muted leading-relaxed">
-                  {item.body.map((p, j) => (
-                    <p key={j}>{p}</p>
-                  ))}
-                </div>
+              <h3 className="font-display text-xl text-ink mt-2 mb-1">
+                {item.title}
+              </h3>
+              {item.why && (
+                <p className="text-sm italic text-accent mb-3">
+                  Why: {item.why}
+                </p>
+              )}
+              <div className="space-y-3 text-muted leading-relaxed">
+                {item.body.map((p, j) => (
+                  <p key={j}>{p}</p>
+                ))}
               </div>
             </div>
-          </Reveal>
-        ))}
+          );
+
+          if (item.image) {
+            const { w, h } = dims(item.image);
+            const reversed = i % 2 === 1;
+            return (
+              <Reveal key={item.title} delay={i * 0.04}>
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  <div className={reversed ? "md:order-2" : undefined}>
+                    <div className="rounded-2xl overflow-hidden border border-line bg-surface-raised/40">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        width={w}
+                        height={h}
+                        className="w-full h-auto"
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                      />
+                    </div>
+                  </div>
+                  <div className={reversed ? "md:order-1" : undefined}>
+                    {text}
+                  </div>
+                </div>
+              </Reveal>
+            );
+          }
+
+          return (
+            <Reveal key={item.title} delay={i * 0.04}>
+              <div className="grid sm:grid-cols-[64px_1fr] gap-3 sm:gap-6">
+                <Num n={i + 1} />
+                <div>
+                  <h3 className="font-display text-xl text-ink mb-1">
+                    {item.title}
+                  </h3>
+                  {item.why && (
+                    <p className="text-sm italic text-accent mb-3">
+                      Why: {item.why}
+                    </p>
+                  )}
+                  <div className="space-y-3 text-muted leading-relaxed">
+                    {item.body.map((p, j) => (
+                      <p key={j}>{p}</p>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          );
+        })}
       </div>
     </div>
   );

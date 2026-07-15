@@ -4,7 +4,7 @@ export type Stat = {
   link?: { text: string; href: string };
 };
 
-export type Block =
+export type Block = { anchor?: "problem" | "solution" } & (
   | { type: "text"; heading: string; paragraphs: string[] }
   | {
       type: "numbered";
@@ -22,12 +22,13 @@ export type Block =
       type: "decisions";
       heading: string;
       intro?: string;
-      items: { title: string; why?: string; body: string[] }[];
+      items: { title: string; why?: string; body: string[]; image?: string }[];
     }
   | { type: "outcomes"; heading: string; items: string[] }
   | { type: "image"; src: string; caption?: string }
   | { type: "gallery"; images: { src: string; caption?: string }[] }
-  | { type: "video"; src: string; caption?: string };
+  | { type: "video"; src: string; caption?: string }
+);
 
 export type Project = {
   slug: string;
@@ -39,6 +40,7 @@ export type Project = {
   cover: { from: string; to: string };
   image: string;
   role: string[];
+  team: string[];
   stats: Stat[];
   blocks: Block[];
 };
@@ -60,6 +62,7 @@ export const projects: Project[] = [
       "Created new design components, variables, and system patterns",
       "Partnered closely with engineering and development on feasibility and handoff",
     ],
+    team: ["1 Designer (Me)", "4 Developers", "1 Project Manager"],
     stats: [
       { value: "200%", label: "of the annual sales target" },
       { value: "3 → 9", label: "core features scaled" },
@@ -80,6 +83,7 @@ export const projects: Project[] = [
       },
       {
         type: "numbered",
+        anchor: "problem",
         heading: "What problem were we solving?",
         intro:
           "Before this project, people had to control each product one at a time. There was no simple way to automate actions or combine products, which made everyday tasks feel harder than they needed to be. Before this project, Marvin Connected Home only supported:",
@@ -100,6 +104,7 @@ export const projects: Project[] = [
       },
       {
         type: "text",
+        anchor: "solution",
         heading: "Why do Scenes matter?",
         paragraphs: [
           "A scene is a smart-home shortcut that lets you automate multiple products at once — like opening windows, lowering shades, and adjusting lights — all triggered by a tap, a schedule, or the weather.",
@@ -145,13 +150,6 @@ export const projects: Project[] = [
         ],
       },
       {
-        type: "gallery",
-        images: [
-          { src: "/images/scenes/shot-5.png", caption: "An early scene creation screen" },
-          { src: "/images/scenes/shot-6.png", caption: "The Scenes dashboard" },
-        ],
-      },
-      {
         type: "decisions",
         heading: "What were the key design decisions?",
         intro:
@@ -159,6 +157,7 @@ export const projects: Project[] = [
         items: [
           {
             title: "A clear, three-step scene creation flow",
+            image: "/images/scenes/shot-5.png",
             body: [
               "To make scene creation faster and easier to understand, we introduced a clear, structured flow built around: Name — labeling the intent of the automation up front. Product actions — selecting exactly what each device should do. Triggers — defining when the scene should run.",
               "This framework reduced setup time, increased clarity and guidance, and streamlined decision-making — especially for users managing complex, multi-device environments.",
@@ -166,6 +165,7 @@ export const projects: Project[] = [
           },
           {
             title: "Actionable scene cards",
+            image: "/images/scenes/shot-6.png",
             body: [
               "To help users understand and control automations at a glance, each card includes a toggle for automation, a color-coded lozenge showing when it will run, a play button for manual activation, and tap targets for viewing or duplicating a scene.",
               "This pattern aligns with relevant industry standards but is adapted for the complexity of Marvin's products.",
@@ -173,6 +173,7 @@ export const projects: Project[] = [
           },
           {
             title: "Clear and safe trigger logic",
+            image: "/images/scenes/shot-4.png",
             body: [
               "Every scene supports on-demand activation, scheduled triggers (recurring day + time), and weather triggers based on temperature and humidity.",
               "To keep the experience predictable and safe: weather triggers require both temperature and humidity criteria to be true, scenes are limited to one combined range, and power users can duplicate scenes to create more advanced multi-condition setups. This eliminated confusion and prevented conflicting automations.",
@@ -180,6 +181,7 @@ export const projects: Project[] = [
           },
           {
             title: "Scalable design elements",
+            image: "/images/scenes/shot-9.png",
             body: [
               "To support Marvin's growing ecosystem, the scene dashboard was intentionally built using a mix of new and existing design-system components — reusing core patterns to maintain familiarity and reduce dev lift, while adding new structural elements and a modular layout that can expand as new capabilities are added.",
               "This ultimately became the foundation for future automation features.",
@@ -193,16 +195,9 @@ export const projects: Project[] = [
         caption: "The full scene creation flow — name, product actions, then triggers.",
       },
       {
-        type: "gallery",
-        images: [
-          { src: "/images/scenes/shot-4.png", caption: "Configuring weather-based triggers" },
-          { src: "/images/scenes/shot-7.png", caption: "A plain-language explainer for how weather triggers work" },
-        ],
-      },
-      {
         type: "image",
-        src: "/images/scenes/shot-9.png",
-        caption: "One pattern, scaled across airflow, lights, privacy glass, and shades.",
+        src: "/images/scenes/shot-7.png",
+        caption: "A plain-language explainer for how weather triggers work",
       },
       {
         type: "video",
@@ -242,6 +237,12 @@ export const projects: Project[] = [
       "Built interactive prototypes, design-system components, and configuration logic",
       "Partnered with engineering early to align on product rules and feasibility",
     ],
+    team: [
+      "3 UX/UI Designers",
+      "1 UI Designer",
+      "3 Developers",
+      "1 Design Manager",
+    ],
     stats: [
       { value: "20", label: "architects, dealers & builders interviewed" },
       { value: "↓", label: "APM assistance requests" },
@@ -249,14 +250,8 @@ export const projects: Project[] = [
     ],
     blocks: [
       {
-        type: "text",
-        heading: "What is Marvin's window design tool?",
-        paragraphs: [
-          "The Marvin Design Tool is an interactive, web-based tool that lets architects experiment with Marvin windows and doors — change sizes, materials, configurations, and assemblies, and instantly see how those choices look and behave. It's designed to capture design intent clearly, reduce confusion, and help teams make smarter decisions earlier in the project.",
-        ],
-      },
-      {
         type: "numbered",
+        anchor: "problem",
         heading: "What problem were we solving?",
         intro:
           "Before this project, architects relied on static PDFs, manual conversations, and product catalogs. This led to:",
@@ -277,6 +272,14 @@ export const projects: Project[] = [
             title: "Difficulty visualizing assembly configurations",
             body: "Without a visual, interactive tool, architects struggled to understand how units fit together or whether configurations were feasible.",
           },
+        ],
+      },
+      {
+        type: "text",
+        anchor: "solution",
+        heading: "What is Marvin's window design tool?",
+        paragraphs: [
+          "The Marvin Design Tool is an interactive, web-based tool that lets architects experiment with Marvin windows and doors — change sizes, materials, configurations, and assemblies, and instantly see how those choices look and behave. It's designed to capture design intent clearly, reduce confusion, and help teams make smarter decisions earlier in the project.",
         ],
       },
       {
