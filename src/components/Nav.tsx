@@ -9,6 +9,11 @@ const links = [
   { href: "/#work", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+  {
+    href: "https://drive.google.com/file/d/1N_GUOSDiCalIr47OnOcwCyGQeRM0oF_j/view?usp=drive_link",
+    label: "Resume",
+    external: true,
+  },
 ];
 
 export default function Nav() {
@@ -45,26 +50,35 @@ export default function Nav() {
         <ul className="flex items-center gap-0.5 sm:gap-1">
           {links.map((link) => {
             const active =
-              link.href !== "/#work" && pathname === link.href;
+              !link.external &&
+              link.href !== "/#work" &&
+              pathname === link.href;
+            const className = `relative px-2.5 sm:px-3 py-2 text-sm rounded-full transition-colors whitespace-nowrap ${
+              active ? "text-ink" : "text-muted hover:text-ink"
+            }`;
             return (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`relative px-2.5 sm:px-3 py-2 text-sm rounded-full transition-colors whitespace-nowrap ${
-                    active
-                      ? "text-ink"
-                      : "text-muted hover:text-ink"
-                  }`}
-                >
-                  {link.label}
-                  {active && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute inset-0 -z-10 rounded-full bg-surface-raised"
-                      transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                    />
-                  )}
-                </Link>
+                {link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={className}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link href={link.href} className={className}>
+                    {link.label}
+                    {active && (
+                      <motion.span
+                        layoutId="nav-active"
+                        className="absolute inset-0 -z-10 rounded-full bg-surface-raised"
+                        transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                      />
+                    )}
+                  </Link>
+                )}
               </li>
             );
           })}
