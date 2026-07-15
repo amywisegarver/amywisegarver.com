@@ -34,7 +34,7 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
   return (
     <div>
       <section
-        className="relative pt-40 pb-20 md:pt-48 md:pb-24"
+        className="relative pt-40 pb-40 md:pt-48 md:pb-56 overflow-hidden"
         style={{
           background: `linear-gradient(160deg, ${project.cover.from}, ${project.cover.to})`,
         }}
@@ -68,9 +68,15 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
             </div>
           </Reveal>
         </div>
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-48 md:h-64"
+          style={{
+            background: "linear-gradient(to bottom, transparent, var(--background))",
+          }}
+        />
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 md:px-8 -mt-8 md:-mt-12 relative">
+      <section className="mx-auto max-w-5xl px-6 md:px-8 -mt-40 md:-mt-52 relative">
         <Reveal delay={0.1}>
           <div className="relative aspect-[4/3] sm:aspect-[16/9] rounded-3xl overflow-hidden shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)]">
             <Image
