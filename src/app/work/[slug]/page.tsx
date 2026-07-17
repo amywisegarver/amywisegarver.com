@@ -47,7 +47,7 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
 
   return (
     <div className="bg-surface">
-      <section className="relative pt-28 pb-20 md:pt-32 md:pb-24 overflow-hidden">
+      <section className="relative pt-28 pb-20 md:pt-32 md:pb-24 overflow-hidden border-b border-line">
         <div className="absolute inset-0">
           <Image
             src={project.heroImage ?? project.image}
@@ -82,12 +82,6 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
             </div>
           </Reveal>
         </div>
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-48 md:h-64"
-          style={{
-            background: "linear-gradient(to bottom, transparent, var(--surface))",
-          }}
-        />
       </section>
 
       <div className="mx-auto max-w-6xl px-6 md:px-8 mt-14 md:mt-20 pb-12 md:pb-16 lg:grid lg:grid-cols-[160px_1fr] lg:gap-16">
