@@ -7,6 +7,12 @@ export type Stat = {
 export type Block = { anchor?: "problem" | "solution" } & (
   | { type: "text"; heading: string; paragraphs: string[] }
   | {
+      type: "text-image";
+      heading: string;
+      paragraphs: string[];
+      image: string;
+    }
+  | {
       type: "numbered";
       heading: string;
       intro?: string;
@@ -25,7 +31,7 @@ export type Block = { anchor?: "problem" | "solution" } & (
       items: { title: string; why?: string; body: string[]; image?: string }[];
     }
   | { type: "outcomes"; heading: string; items: string[] }
-  | { type: "image"; src: string; caption?: string }
+  | { type: "image"; src: string; caption?: string; full?: boolean }
   | { type: "gallery"; images: { src: string; caption?: string }[] }
   | { type: "video"; src: string; caption?: string }
 );
@@ -70,16 +76,12 @@ export const projects: Project[] = [
     ],
     blocks: [
       {
-        type: "text",
+        type: "text-image",
         heading: "What is Marvin Connected Home?",
         paragraphs: [
           "Marvin Connected Home is the smart-home app that enables homeowners to control their automated windows, doors, skylights, lights, shades, and privacy glass — making it easy to adjust airflow, comfort, and security from anywhere.",
         ],
-      },
-      {
-        type: "image",
-        src: "/images/scenes/shot-1.png",
-        caption: "Marvin's connected windows and doors — the hardware Scenes automates.",
+        image: "/images/scenes/shot-1.png",
       },
       {
         type: "numbered",
@@ -118,6 +120,7 @@ export const projects: Project[] = [
         type: "image",
         src: "/images/scenes/shot-2.png",
         caption: "A scheduled Scene opening the bedroom window and surfacing a quiet in-app notification.",
+        full: true,
       },
       {
         type: "numbered",

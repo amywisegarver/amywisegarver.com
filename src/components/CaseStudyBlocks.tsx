@@ -64,6 +64,40 @@ function TextBlock({ block }: { block: Extract<Block, { type: "text" }> }) {
   );
 }
 
+function TextImageBlock({
+  block,
+}: {
+  block: Extract<Block, { type: "text-image" }>;
+}) {
+  const { w, h } = dims(block.image);
+  return (
+    <Reveal>
+      <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div>
+          <h2 className="font-display text-2xl sm:text-3xl text-ink mb-5">
+            {block.heading}
+          </h2>
+          <div className="space-y-4 text-muted leading-relaxed">
+            {block.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-line bg-surface-raised/40">
+          <Image
+            src={block.image}
+            alt={block.heading}
+            width={w}
+            height={h}
+            className="w-full h-auto"
+            sizes="(min-width: 768px) 50vw, 100vw"
+          />
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
 function NumberedBlock({
   block,
 }: {
@@ -169,7 +203,7 @@ function CompareBlock({
 function ImageBlock({ block }: { block: Extract<Block, { type: "image" }> }) {
   const { w, h } = dims(block.src);
   return (
-    <Reveal className="max-w-3xl">
+    <Reveal className={block.full ? "w-full" : "max-w-3xl"}>
       <div className="rounded-2xl overflow-hidden border border-line bg-surface-raised/40">
         <Image
           src={block.src}
@@ -177,12 +211,9 @@ function ImageBlock({ block }: { block: Extract<Block, { type: "image" }> }) {
           width={w}
           height={h}
           className="w-full h-auto"
-          sizes="(min-width: 1024px) 768px, 100vw"
+          sizes={block.full ? "100vw" : "(min-width: 1024px) 768px, 100vw"}
         />
       </div>
-      {block.caption && (
-        <p className="mt-3 text-sm text-muted">{block.caption}</p>
-      )}
     </Reveal>
   );
 }
@@ -208,9 +239,6 @@ function GalleryBlock({
                 sizes="(min-width: 640px) 384px, 100vw"
               />
             </div>
-            {img.caption && (
-              <p className="mt-3 text-sm text-muted">{img.caption}</p>
-            )}
           </Reveal>
         );
       })}
@@ -231,9 +259,6 @@ function VideoBlock({ block }: { block: Extract<Block, { type: "video" }> }) {
           className="w-full h-auto"
         />
       </div>
-      {block.caption && (
-        <p className="mt-3 text-sm text-muted">{block.caption}</p>
-      )}
     </Reveal>
   );
 }
@@ -277,25 +302,27 @@ function DecisionsBlock({
           );
 
           if (item.image) {
-            const { w, h } = dims(item.image);
             const reversed = i % 2 === 1;
             return (
               <Reveal key={item.title} delay={i * 0.04}>
-                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-                  <div className={reversed ? "md:order-2" : undefined}>
-                    <div className="rounded-2xl overflow-hidden border border-line bg-surface-raised/40">
+                <div className="rounded-3xl border border-line bg-surface-raised/60 px-6 py-8 sm:px-10 sm:py-10">
+                  <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+                    <div
+                      className={`relative min-h-[260px] rounded-2xl overflow-hidden border border-line bg-surface-raised/40 ${
+                        reversed ? "md:order-2" : ""
+                      }`}
+                    >
                       <Image
                         src={item.image}
                         alt={item.title}
-                        width={w}
-                        height={h}
-                        className="w-full h-auto"
+                        fill
+                        className="object-cover"
                         sizes="(min-width: 768px) 50vw, 100vw"
                       />
                     </div>
-                  </div>
-                  <div className={reversed ? "md:order-1" : undefined}>
-                    {text}
+                    <div className={reversed ? "md:order-1" : undefined}>
+                      {text}
+                    </div>
                   </div>
                 </div>
               </Reveal>
@@ -304,21 +331,23 @@ function DecisionsBlock({
 
           return (
             <Reveal key={item.title} delay={i * 0.04}>
-              <div className="grid sm:grid-cols-[64px_1fr] gap-3 sm:gap-6">
-                <Num n={i + 1} />
-                <div>
-                  <h3 className="font-display text-xl text-ink mb-1">
-                    {item.title}
-                  </h3>
-                  {item.why && (
-                    <p className="text-sm italic text-accent mb-3">
-                      Why: {item.why}
-                    </p>
-                  )}
-                  <div className="space-y-3 text-muted leading-relaxed">
-                    {item.body.map((p, j) => (
-                      <p key={j}>{p}</p>
-                    ))}
+              <div className="rounded-3xl border border-line bg-surface-raised/60 px-6 py-8 sm:px-10 sm:py-10">
+                <div className="grid sm:grid-cols-[64px_1fr] gap-3 sm:gap-6">
+                  <Num n={i + 1} />
+                  <div>
+                    <h3 className="font-display text-xl text-ink mb-1">
+                      {item.title}
+                    </h3>
+                    {item.why && (
+                      <p className="text-sm italic text-accent mb-3">
+                        Why: {item.why}
+                      </p>
+                    )}
+                    <div className="space-y-3 text-muted leading-relaxed">
+                      {item.body.map((p, j) => (
+                        <p key={j}>{p}</p>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -360,6 +389,8 @@ export default function BlockRenderer({ block }: { block: Block }) {
   switch (block.type) {
     case "text":
       return <TextBlock block={block} />;
+    case "text-image":
+      return <TextImageBlock block={block} />;
     case "numbered":
       return <NumberedBlock block={block} />;
     case "quote":

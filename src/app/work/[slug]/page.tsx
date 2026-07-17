@@ -6,7 +6,6 @@ import Reveal from "@/components/Reveal";
 import StatCounter from "@/components/StatCounter";
 import BlockRenderer, { ContainedSection } from "@/components/CaseStudyBlocks";
 import CaseStudyNav from "@/components/CaseStudyNav";
-import MagneticButton from "@/components/MagneticButton";
 import { projects, getProject } from "@/lib/projects";
 
 export function generateStaticParams() {
@@ -48,13 +47,25 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
 
   return (
     <div className="bg-surface">
-      <section
-        className="relative pt-40 pb-40 md:pt-48 md:pb-56 overflow-hidden"
-        style={{
-          background: `linear-gradient(160deg, ${project.cover.from}, ${project.cover.to})`,
-        }}
-      >
-        <div className="mx-auto max-w-4xl px-6 md:px-8 text-white">
+      <section className="relative pt-28 pb-20 md:pt-32 md:pb-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={project.image}
+            alt=""
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(160deg, ${project.cover.from}f7, ${project.cover.to}eb)`,
+            }}
+          />
+          <div className="absolute inset-0 bg-black/25" />
+        </div>
+        <div className="mx-auto max-w-4xl px-6 md:px-8 text-white relative">
           <Reveal>
             <Link
               href="/#work"
@@ -91,7 +102,7 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
         />
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 md:px-8 -mt-40 md:-mt-52 relative">
+      <section className="mx-auto max-w-5xl px-6 md:px-8 -mt-24 md:-mt-32 relative">
         <Reveal delay={0.1}>
           <div className="relative aspect-[4/3] sm:aspect-[16/9] rounded-3xl overflow-hidden shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)]">
             <Image
@@ -106,7 +117,7 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
         </Reveal>
       </section>
 
-      <div className="mx-auto max-w-6xl px-6 md:px-8 mt-14 md:mt-20 lg:grid lg:grid-cols-[160px_1fr] lg:gap-16">
+      <div className="mx-auto max-w-6xl px-6 md:px-8 mt-14 md:mt-20 pb-12 md:pb-16 lg:grid lg:grid-cols-[160px_1fr] lg:gap-16">
         <CaseStudyNav sections={navSections} />
 
         <div className="space-y-24 md:space-y-28 pb-24 md:pb-32">
@@ -115,28 +126,34 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
               id="overview"
               className="scroll-mt-28 rounded-2xl bg-surface border border-line shadow-[0_20px_60px_-30px_rgba(0,0,0,0.25)] px-6 py-8 sm:px-10 sm:py-10"
             >
-              <p className="font-mono text-xs uppercase tracking-widest text-muted mb-5">
-                My role
-              </p>
-              <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2 mb-10">
-                {project.role.map((r) => (
-                  <li key={r} className="flex gap-2 text-sm text-muted leading-relaxed">
-                    <span className="text-accent">—</span>
-                    {r}
-                  </li>
-                ))}
-              </ul>
-              <p className="font-mono text-xs uppercase tracking-widest text-muted mb-5">
-                Team
-              </p>
-              <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2 mb-10">
-                {project.team.map((t) => (
-                  <li key={t} className="flex gap-2 text-sm text-muted leading-relaxed">
-                    <span className="text-accent">—</span>
-                    {t}
-                  </li>
-                ))}
-              </ul>
+              <div className="grid sm:grid-cols-2 gap-x-8 gap-y-8 mb-10">
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-widest text-muted mb-5">
+                    My role
+                  </p>
+                  <ul className="space-y-2">
+                    {project.role.map((r) => (
+                      <li key={r} className="flex gap-2 text-sm text-muted leading-relaxed">
+                        <span className="text-accent">—</span>
+                        {r}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-widest text-muted mb-5">
+                    Team
+                  </p>
+                  <ul className="space-y-2">
+                    {project.team.map((t) => (
+                      <li key={t} className="flex gap-2 text-sm text-muted leading-relaxed">
+                        <span className="text-accent">—</span>
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
               <p className="font-mono text-xs uppercase tracking-widest text-muted mb-5">
                 Results
               </p>
@@ -184,9 +201,6 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
                 </span>
                 <span className="mt-2 text-muted">{otherProject.summary}</span>
               </Link>
-              <div className="mt-10">
-                <MagneticButton href="/contact">Let&apos;s talk</MagneticButton>
-              </div>
             </Reveal>
           </div>
         </section>
