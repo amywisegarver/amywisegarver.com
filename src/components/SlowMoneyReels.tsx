@@ -65,7 +65,7 @@ export default function SlowMoneyReels() {
         </AnimatePresence>
       </div>
 
-      <div className="mt-4 flex items-center justify-center gap-3">
+      <div className="mt-4 flex items-center justify-between">
         <button
           type="button"
           aria-label="Previous video"
