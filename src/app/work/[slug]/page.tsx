@@ -50,7 +50,7 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
       <section className="relative pt-28 pb-20 md:pt-32 md:pb-24 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src={project.image}
+            src={project.heroImage ?? project.image}
             alt=""
             fill
             priority
@@ -67,12 +67,6 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
         </div>
         <div className="mx-auto max-w-4xl px-6 md:px-8 text-white relative">
           <Reveal>
-            <Link
-              href="/#work"
-              className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors mb-8"
-            >
-              ← All work
-            </Link>
             <p className="font-mono text-xs uppercase tracking-widest text-white/60 mb-4">
               {project.client}
             </p>
@@ -100,21 +94,6 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
             background: "linear-gradient(to bottom, transparent, var(--surface))",
           }}
         />
-      </section>
-
-      <section className="mx-auto max-w-5xl px-6 md:px-8 -mt-24 md:-mt-32 relative">
-        <Reveal delay={0.1}>
-          <div className="relative aspect-[4/3] sm:aspect-[16/9] rounded-3xl overflow-hidden shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)]">
-            <Image
-              src={project.image}
-              alt={`${project.title} interface preview`}
-              fill
-              sizes="(min-width: 1024px) 960px, 100vw"
-              className="object-cover"
-              priority
-            />
-          </div>
-        </Reveal>
       </section>
 
       <div className="mx-auto max-w-6xl px-6 md:px-8 mt-14 md:mt-20 pb-12 md:pb-16 lg:grid lg:grid-cols-[160px_1fr] lg:gap-16">

@@ -46,6 +46,7 @@ export type Project = {
   summary: string;
   cover: { from: string; to: string };
   image: string;
+  heroImage?: string;
   role: string[];
   team: string[];
   stats: Stat[];
@@ -63,6 +64,7 @@ export const projects: Project[] = [
       "Scenes for the Marvin Connected Home app enables homeowners to automate their windows, doors, lights, and shades in a flexible and secure way — whether it be with a tap, a schedule, or the weather.",
     cover: { from: "#1c2b28", to: "#2f6f5e" },
     image: "/images/scenes-cover.png",
+    heroImage: "/images/scenes/shot-3.jpg",
     role: [
       "Led UX strategy and all end-to-end UX and UI design",
       "Drove four rounds of iterative testing with dealers, homeowners, and integrators",
