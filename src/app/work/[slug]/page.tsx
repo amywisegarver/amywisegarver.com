@@ -57,13 +57,7 @@ export default async function CaseStudy(props: PageProps<"/work/[slug]">) {
             className="object-cover"
             sizes="100vw"
           />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(160deg, ${project.cover.from}f7, ${project.cover.to}eb)`,
-            }}
-          />
-          <div className="absolute inset-0 bg-black/25" />
+          <div className="absolute inset-0 bg-black/60" />
         </div>
         <div className="mx-auto max-w-4xl px-6 md:px-8 text-white relative">
           <Reveal>

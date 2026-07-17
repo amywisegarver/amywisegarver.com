@@ -20,6 +20,7 @@ export default function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
+  const overDarkHero = pathname?.startsWith("/work/") && !scrolled;
 
   useEffect(() => {
     const onScroll = () => {
@@ -43,7 +44,11 @@ export default function Nav() {
     >
       <nav className="mx-auto max-w-6xl px-6 md:px-8 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center group whitespace-nowrap shrink-0">
-          <span className="font-display text-base sm:text-lg tracking-tight text-ink group-hover:text-accent transition-colors">
+          <span
+            className={`font-display text-base sm:text-lg tracking-tight group-hover:text-accent transition-colors ${
+              overDarkHero ? "text-white" : "text-ink"
+            }`}
+          >
             Amy Wisegarver
           </span>
         </Link>
