@@ -71,7 +71,7 @@ export const projects: Project[] = [
       "Created new design components, variables, and system patterns",
       "Partnered closely with engineering and development on feasibility and handoff",
     ],
-    team: ["1 Designer (Me)", "4 Developers", "1 Project Manager"],
+    team: ["1 Designer 🙋", "4 Developers", "1 Project Manager"],
     stats: [
       { value: "200%", label: "of the annual sales target" },
       { value: "3 → 9", label: "core features scaled" },
@@ -230,7 +230,7 @@ export const projects: Project[] = [
       "Partnered with engineering early to align on product rules and feasibility",
     ],
     team: [
-      "3 UX/UI Designers",
+      "3 UX/UI Designers 🙋",
       "1 UI Designer",
       "3 Developers",
       "1 Design Manager",
