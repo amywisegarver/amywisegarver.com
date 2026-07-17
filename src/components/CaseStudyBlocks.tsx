@@ -16,7 +16,7 @@ const DIMENSIONS: Record<string, { w: number; h: number }> = {
   "/images/scenes/decision-2.png": { w: 1080, h: 1920 },
   "/images/scenes/decision-3.png": { w: 1080, h: 1920 },
   "/images/scenes/decision-4.png": { w: 1080, h: 1920 },
-  "/images/scenes/create-scene-flow.png": { w: 1800, h: 1212 },
+  "/images/scenes/create-scene-before-after.png": { w: 1800, h: 1232 },
   "/images/window-tool/shot-1.jpeg": { w: 592, h: 631 },
 };
 

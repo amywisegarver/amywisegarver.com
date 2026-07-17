@@ -143,7 +143,7 @@ export const projects: Project[] = [
       },
       {
         type: "image",
-        src: "/images/scenes/create-scene-flow.png",
+        src: "/images/scenes/create-scene-before-after.png",
         full: true,
         plain: true,
       },
