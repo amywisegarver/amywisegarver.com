@@ -239,6 +239,8 @@ export const projects: Project[] = [
       { value: "20", label: "architects, dealers & builders interviewed" },
       { value: "↓", label: "APM assistance requests" },
       { value: "↑", label: "specification accuracy" },
+      { value: "22%", label: "faster design-to-order conversion" },
+      { value: "25%", label: "decrease in post-submission order corrections" },
     ],
     blocks: [
       {
@@ -275,16 +277,9 @@ export const projects: Project[] = [
         ],
       },
       {
-        type: "compare",
-        before: {
-          title: "Before: Order Management System (OMS)",
-          body: "Text-based configuration with limited visual feedback and complex rule logic.",
-          image: "/images/window-tool/shot-1.jpeg",
-        },
-        after: {
-          title: "After: Window Visualizer Tool",
-          body: "A visual, interactive experience with the same product rules, validation, and data as OMS.",
-        },
+        type: "video",
+        src: "/images/window-tool/demo-assembly.mp4",
+        caption: "Building a window assembly in the visualizer.",
       },
       {
         type: "video",
@@ -303,6 +298,19 @@ export const projects: Project[] = [
           { title: "Bridges teams", body: "Bridges communication across project stakeholders." },
           { title: "Supports every role", body: "Works for multiple user types with different permissions." },
         ],
+      },
+      {
+        type: "compare",
+        before: {
+          title: "Before: Order Management System (OMS)",
+          body: "Text-based configuration with limited visual feedback and complex rule logic.",
+          image: "/images/window-tool/shot-1.jpeg",
+        },
+        after: {
+          title: "After: Window Visualizer Tool",
+          body: "A visual, interactive experience with the same product rules, validation, and data as OMS.",
+          image: "/images/window-tool/shot-2-after.png",
+        },
       },
       {
         type: "numbered",

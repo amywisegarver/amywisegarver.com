@@ -18,6 +18,7 @@ const DIMENSIONS: Record<string, { w: number; h: number }> = {
   "/images/scenes/decision-4.png": { w: 1080, h: 1920 },
   "/images/scenes/create-scene-before-after.png": { w: 1800, h: 1232 },
   "/images/window-tool/shot-1.jpeg": { w: 592, h: 631 },
+  "/images/window-tool/shot-2-after.png": { w: 912, h: 956 },
 };
 
 function dims(src: string) {
