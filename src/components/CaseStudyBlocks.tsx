@@ -82,8 +82,8 @@ function TextImageBlock({
             ))}
           </div>
         </div>
-        <div className="rounded-2xl overflow-hidden border border-line bg-surface-raised/40">
-          {block.video ? (
+        {block.video ? (
+          <div className="max-w-[240px] mx-auto rounded-2xl overflow-hidden">
             <video
               src={block.video}
               autoPlay
@@ -93,11 +93,13 @@ function TextImageBlock({
               preload="auto"
               className="w-full h-auto"
             />
-          ) : (
-            block.image &&
-            (() => {
-              const { w, h } = dims(block.image);
-              return (
+          </div>
+        ) : (
+          block.image &&
+          (() => {
+            const { w, h } = dims(block.image);
+            return (
+              <div className="rounded-2xl overflow-hidden border border-line bg-surface-raised/40">
                 <Image
                   src={block.image}
                   alt={block.heading}
@@ -106,10 +108,10 @@ function TextImageBlock({
                   className="w-full h-auto"
                   sizes="(min-width: 768px) 50vw, 100vw"
                 />
-              );
-            })()
-          )}
-        </div>
+              </div>
+            );
+          })()
+        )}
       </div>
     </Reveal>
   );
@@ -266,7 +268,7 @@ function GalleryBlock({
 function VideoBlock({ block }: { block: Extract<Block, { type: "video" }> }) {
   return (
     <Reveal className="max-w-3xl">
-      <div className="rounded-2xl overflow-hidden border border-line bg-ink">
+      <div className="rounded-2xl overflow-hidden bg-ink">
         <video
           src={block.src}
           autoPlay
