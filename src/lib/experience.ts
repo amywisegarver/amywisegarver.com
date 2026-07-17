@@ -44,3 +44,23 @@ export const slowMoneyClub = {
   instagram: "https://www.instagram.com/theslowmoneyclub/",
   tiktok: "https://www.tiktok.com/@theslowmoneyclub",
 };
+
+export type SlowMoneyReel = { image: string; alt: string; tiktokUrl: string };
+
+export const slowMoneyClubReels: SlowMoneyReel[] = [
+  {
+    image: "/images/slow-money-club/stock-market-crash.png",
+    alt: "I'm not scared of a stock market crash",
+    tiktokUrl: "https://www.tiktok.com/@theslowmoneyclub/video/7662999720868039950",
+  },
+  {
+    image: "/images/slow-money-club/wtf-is-the-stock-market.png",
+    alt: "What the f*ck is the stock market",
+    tiktokUrl: "https://www.tiktok.com/@theslowmoneyclub/video/7653750515406261517",
+  },
+  {
+    image: "/images/slow-money-club/wtf-is-an-etf.png",
+    alt: "What the f*ck is an E.T.F.",
+    tiktokUrl: "https://www.tiktok.com/@theslowmoneyclub/video/7658552348268072206",
+  },
+];

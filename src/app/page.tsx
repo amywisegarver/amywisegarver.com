@@ -2,6 +2,7 @@ import Reveal from "@/components/Reveal";
 import ProjectCard from "@/components/ProjectCard";
 import StatCounter from "@/components/StatCounter";
 import MagneticButton from "@/components/MagneticButton";
+import SlowMoneyReels from "@/components/SlowMoneyReels";
 import { projects } from "@/lib/projects";
 import { slowMoneyClub } from "@/lib/experience";
 
@@ -112,6 +113,7 @@ export default function Home() {
                 TikTok ↗
               </MagneticButton>
             </div>
+            <SlowMoneyReels />
           </div>
         </Reveal>
       </section>

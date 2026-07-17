@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
+import SlowMoneyReels from "@/components/SlowMoneyReels";
 import { experience, slowMoneyClub } from "@/lib/experience";
 
 export const metadata: Metadata = {
@@ -124,6 +125,7 @@ export default function About() {
                 TikTok ↗
               </MagneticButton>
             </div>
+            <SlowMoneyReels />
           </div>
         </Reveal>
       </section>
