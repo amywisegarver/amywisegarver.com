@@ -331,7 +331,7 @@ function DecisionsBlock({
                 <div className="rounded-3xl border border-line bg-surface-raised/60 px-6 py-8 sm:px-10 sm:py-10">
                   <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
                     <div
-                      className={`relative min-h-[260px] ${
+                      className={`relative h-[420px] sm:h-[480px] lg:h-[560px] ${
                         reversed ? "md:order-2" : ""
                       }`}
                     >
