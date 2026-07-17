@@ -10,7 +10,7 @@ const links = [
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
   {
-    href: "https://drive.google.com/file/d/1N_GUOSDiCalIr47OnOcwCyGQeRM0oF_j/view?usp=drive_link",
+    href: "https://drive.google.com/file/d/1jA-OhSnSoiHUT-TfA8z0jCmoVQ45UOQj/view?usp=sharing",
     label: "Resume",
     external: true,
   },
