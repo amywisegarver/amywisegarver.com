@@ -12,6 +12,10 @@ const DIMENSIONS: Record<string, { w: number; h: number }> = {
   "/images/scenes/shot-6.png": { w: 583, h: 1024 },
   "/images/scenes/shot-7.png": { w: 583, h: 1024 },
   "/images/scenes/shot-9.png": { w: 1024, h: 490 },
+  "/images/scenes/decision-1.png": { w: 1080, h: 1920 },
+  "/images/scenes/decision-2.png": { w: 1080, h: 1920 },
+  "/images/scenes/decision-3.png": { w: 1080, h: 1920 },
+  "/images/scenes/decision-4.png": { w: 1080, h: 1920 },
   "/images/window-tool/shot-1.jpeg": { w: 592, h: 631 },
 };
 
@@ -327,7 +331,7 @@ function DecisionsBlock({
                 <div className="rounded-3xl border border-line bg-surface-raised/60 px-6 py-8 sm:px-10 sm:py-10">
                   <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
                     <div
-                      className={`relative min-h-[260px] rounded-2xl overflow-hidden border border-line bg-surface-raised/40 ${
+                      className={`relative min-h-[260px] ${
                         reversed ? "md:order-2" : ""
                       }`}
                     >
@@ -335,7 +339,7 @@ function DecisionsBlock({
                         src={item.image}
                         alt={item.title}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                         sizes="(min-width: 768px) 50vw, 100vw"
                       />
                     </div>

@@ -161,7 +161,7 @@ export const projects: Project[] = [
         items: [
           {
             title: "A clear, three-step scene creation flow",
-            image: "/images/scenes/shot-5.png",
+            image: "/images/scenes/decision-1.png",
             body: [
               "To make scene creation faster and easier to understand, we introduced a clear, structured flow built around: Name — labeling the intent of the automation up front. Product actions — selecting exactly what each device should do. Triggers — defining when the scene should run.",
               "This framework reduced setup time, increased clarity and guidance, and streamlined decision-making — especially for users managing complex, multi-device environments.",
@@ -169,7 +169,7 @@ export const projects: Project[] = [
           },
           {
             title: "Actionable scene cards",
-            image: "/images/scenes/shot-6.png",
+            image: "/images/scenes/decision-2.png",
             body: [
               "To help users understand and control automations at a glance, each card includes a toggle for automation, a color-coded lozenge showing when it will run, a play button for manual activation, and tap targets for viewing or duplicating a scene.",
               "This pattern aligns with relevant industry standards but is adapted for the complexity of Marvin's products.",
@@ -177,7 +177,7 @@ export const projects: Project[] = [
           },
           {
             title: "Clear and safe trigger logic",
-            image: "/images/scenes/shot-4.png",
+            image: "/images/scenes/decision-3.png",
             body: [
               "Every scene supports on-demand activation, scheduled triggers (recurring day + time), and weather triggers based on temperature and humidity.",
               "To keep the experience predictable and safe: weather triggers require both temperature and humidity criteria to be true, scenes are limited to one combined range, and power users can duplicate scenes to create more advanced multi-condition setups. This eliminated confusion and prevented conflicting automations.",
@@ -185,7 +185,7 @@ export const projects: Project[] = [
           },
           {
             title: "Scalable design elements",
-            image: "/images/scenes/shot-9.png",
+            image: "/images/scenes/decision-4.png",
             body: [
               "To support Marvin's growing ecosystem, the scene dashboard was intentionally built using a mix of new and existing design-system components — reusing core patterns to maintain familiarity and reduce dev lift, while adding new structural elements and a modular layout that can expand as new capabilities are added.",
               "This ultimately became the foundation for future automation features.",
