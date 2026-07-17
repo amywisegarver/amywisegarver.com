@@ -32,7 +32,7 @@ export type Block = { anchor?: "problem" | "solution" } & (
       items: { title: string; why?: string; body: string[]; image?: string }[];
     }
   | { type: "outcomes"; heading: string; items: string[] }
-  | { type: "image"; src: string; caption?: string; full?: boolean }
+  | { type: "image"; src: string; caption?: string; full?: boolean; plain?: boolean }
   | { type: "gallery"; images: { src: string; caption?: string }[] }
   | { type: "video"; src: string; caption?: string }
 );
@@ -142,6 +142,12 @@ export const projects: Project[] = [
         ],
       },
       {
+        type: "image",
+        src: "/images/scenes/create-scene-flow.png",
+        full: true,
+        plain: true,
+      },
+      {
         type: "numbered",
         heading: "What did we learn from testing earlier iterations?",
         intro:
@@ -192,26 +198,6 @@ export const projects: Project[] = [
             ],
           },
         ],
-      },
-      {
-        type: "video",
-        src: "/images/scenes/demo-2.mp4",
-        caption: "The full scene creation flow — name, product actions, then triggers.",
-      },
-      {
-        type: "image",
-        src: "/images/scenes/shot-7.png",
-        caption: "A plain-language explainer for how weather triggers work",
-      },
-      {
-        type: "video",
-        src: "/images/scenes/demo-1.mp4",
-        caption: "Selecting product actions when building a scene.",
-      },
-      {
-        type: "image",
-        src: "/images/scenes/shot-3.jpg",
-        caption: "Marvin Connected Home, in the wild.",
       },
       {
         type: "outcomes",

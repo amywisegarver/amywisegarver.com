@@ -16,6 +16,7 @@ const DIMENSIONS: Record<string, { w: number; h: number }> = {
   "/images/scenes/decision-2.png": { w: 1080, h: 1920 },
   "/images/scenes/decision-3.png": { w: 1080, h: 1920 },
   "/images/scenes/decision-4.png": { w: 1080, h: 1920 },
+  "/images/scenes/create-scene-flow.png": { w: 1800, h: 1212 },
   "/images/window-tool/shot-1.jpeg": { w: 592, h: 631 },
 };
 
@@ -225,18 +226,25 @@ function CompareBlock({
 
 function ImageBlock({ block }: { block: Extract<Block, { type: "image" }> }) {
   const { w, h } = dims(block.src);
+  const image = (
+    <Image
+      src={block.src}
+      alt={block.caption ?? ""}
+      width={w}
+      height={h}
+      className="w-full h-auto"
+      sizes={block.full ? "100vw" : "(min-width: 1024px) 768px, 100vw"}
+    />
+  );
   return (
     <Reveal className={block.full ? "w-full" : "max-w-3xl"}>
-      <div className="rounded-2xl overflow-hidden border border-line bg-surface-raised/40">
-        <Image
-          src={block.src}
-          alt={block.caption ?? ""}
-          width={w}
-          height={h}
-          className="w-full h-auto"
-          sizes={block.full ? "100vw" : "(min-width: 1024px) 768px, 100vw"}
-        />
-      </div>
+      {block.plain ? (
+        image
+      ) : (
+        <div className="rounded-2xl overflow-hidden border border-line bg-surface-raised/40">
+          {image}
+        </div>
+      )}
     </Reveal>
   );
 }
