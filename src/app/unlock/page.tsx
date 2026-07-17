@@ -40,6 +40,16 @@ export default async function UnlockPage({ searchParams }: Props) {
           Unlock
         </button>
       </form>
+      <p className="mt-8 text-sm text-muted">
+        Don&apos;t have the password? Email{" "}
+        <a
+          href="mailto:amywisegarver@gmail.com"
+          className="text-ink underline decoration-line underline-offset-4 hover:decoration-accent transition-colors"
+        >
+          amywisegarver@gmail.com
+        </a>{" "}
+        for access.
+      </p>
     </div>
   );
 }

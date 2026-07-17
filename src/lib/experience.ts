@@ -14,7 +14,7 @@ export const experience: ExperienceItem[] = [
   },
   {
     company: "Marvin",
-    role: "UX Designer → Senior UX/UI Designer, Marvin Connected Home",
+    role: "UX Designer → Senior UX/UI Designer",
     period: "March 2022 — November 2025",
   },
   {

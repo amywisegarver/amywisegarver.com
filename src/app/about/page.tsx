@@ -56,8 +56,8 @@ export default function About() {
             <div className="flex flex-wrap gap-2">
               {[
                 "Certified backyard chicken wrangler",
-                "25 years of competitive tap dancing",
-                "Resident dahlia-growing whisperer",
+                "Resident dahlia-whisperer",
+                "25-year tenured tap dancer",
               ].map((skill) => (
                 <span
                   key={skill}
