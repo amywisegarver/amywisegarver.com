@@ -144,12 +144,6 @@ export const projects: Project[] = [
         ],
       },
       {
-        type: "image",
-        src: "/images/scenes/create-scene-before-after.png",
-        full: true,
-        plain: true,
-      },
-      {
         type: "numbered",
         heading: "What did we learn from testing earlier iterations?",
         intro:
@@ -160,6 +154,12 @@ export const projects: Project[] = [
           { title: "Add guardrails", body: "Prevent unsafe or conflicting configurations by design." },
           { title: "Clarify timing", body: "Make it obvious how and when a scene would run." },
         ],
+      },
+      {
+        type: "image",
+        src: "/images/scenes/create-scene-before-after.png",
+        full: true,
+        plain: true,
       },
       {
         type: "decisions",
