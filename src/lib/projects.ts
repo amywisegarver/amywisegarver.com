@@ -237,8 +237,6 @@ export const projects: Project[] = [
     ],
     stats: [
       { value: "20", label: "architects, dealers & builders interviewed" },
-      { value: "↓", label: "APM assistance requests" },
-      { value: "↑", label: "specification accuracy" },
       { value: "22%", label: "faster design-to-order conversion" },
       { value: "25%", label: "decrease in post-submission order corrections" },
     ],
@@ -280,11 +278,6 @@ export const projects: Project[] = [
         type: "video",
         src: "/images/window-tool/demo-assembly.mp4",
         caption: "Building a window assembly in the visualizer.",
-      },
-      {
-        type: "video",
-        src: "/images/window-tool/demo-1.mp4",
-        caption: "The Window Visualizer Tool in action.",
       },
       {
         type: "numbered",
