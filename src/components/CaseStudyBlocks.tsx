@@ -69,7 +69,6 @@ function TextImageBlock({
 }: {
   block: Extract<Block, { type: "text-image" }>;
 }) {
-  const { w, h } = dims(block.image);
   return (
     <Reveal>
       <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -84,14 +83,32 @@ function TextImageBlock({
           </div>
         </div>
         <div className="rounded-2xl overflow-hidden border border-line bg-surface-raised/40">
-          <Image
-            src={block.image}
-            alt={block.heading}
-            width={w}
-            height={h}
-            className="w-full h-auto"
-            sizes="(min-width: 768px) 50vw, 100vw"
-          />
+          {block.video ? (
+            <video
+              src={block.video}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="w-full h-auto"
+            />
+          ) : (
+            block.image &&
+            (() => {
+              const { w, h } = dims(block.image);
+              return (
+                <Image
+                  src={block.image}
+                  alt={block.heading}
+                  width={w}
+                  height={h}
+                  className="w-full h-auto"
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                />
+              );
+            })()
+          )}
         </div>
       </div>
     </Reveal>

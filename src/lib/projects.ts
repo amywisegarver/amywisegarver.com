@@ -10,7 +10,8 @@ export type Block = { anchor?: "problem" | "solution" } & (
       type: "text-image";
       heading: string;
       paragraphs: string[];
-      image: string;
+      image?: string;
+      video?: string;
     }
   | {
       type: "numbered";
@@ -81,7 +82,7 @@ export const projects: Project[] = [
         paragraphs: [
           "Marvin Connected Home is the smart-home app that enables homeowners to control their automated windows, doors, skylights, lights, shades, and privacy glass — making it easy to adjust airflow, comfort, and security from anywhere.",
         ],
-        image: "/images/scenes/shot-1.png",
+        video: "/images/scenes/create-scene-demo.mp4",
       },
       {
         type: "numbered",
