@@ -93,27 +93,31 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 md:px-8 pb-24 md:pb-32">
         <Reveal>
           <div className="rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-12 md:px-10 md:py-14">
-            <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
-              Also building — {slowMoneyClub.handle}
-            </p>
-            <h2 className="font-display text-2xl leading-snug text-ink max-w-2xl">
-              {slowMoneyClub.name}, a finance and investing education
-              project for women, queer folks, and anyone else who
-              doesn&apos;t usually get a seat at the financial table.
-            </h2>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <MagneticButton href={slowMoneyClub.instagram} external>
-                Instagram ↗
-              </MagneticButton>
-              <MagneticButton
-                href={slowMoneyClub.tiktok}
-                external
-                tone="light"
-              >
-                TikTok ↗
-              </MagneticButton>
+            <div className="grid md:grid-cols-[1fr_260px] gap-10 md:gap-12 items-center">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+                  Also building — {slowMoneyClub.handle}
+                </p>
+                <h2 className="font-display text-2xl leading-snug text-ink max-w-2xl">
+                  {slowMoneyClub.name}, a finance and investing education
+                  project for women, queer folks, and anyone else who
+                  doesn&apos;t usually get a seat at the financial table.
+                </h2>
+                <div className="mt-10 flex flex-wrap items-center gap-4">
+                  <MagneticButton href={slowMoneyClub.instagram} external>
+                    Instagram ↗
+                  </MagneticButton>
+                  <MagneticButton
+                    href={slowMoneyClub.tiktok}
+                    external
+                    tone="light"
+                  >
+                    TikTok ↗
+                  </MagneticButton>
+                </div>
+              </div>
+              <SlowMoneyReels />
             </div>
-            <SlowMoneyReels />
           </div>
         </Reveal>
       </section>

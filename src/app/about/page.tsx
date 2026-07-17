@@ -108,24 +108,28 @@ export default function About() {
             Also building
           </p>
           <div className="rounded-3xl border border-accent/30 bg-accent-soft/25 px-8 py-10 sm:py-12">
-            <h2 className="font-display text-2xl text-ink mb-1">
-              {slowMoneyClub.name}
-            </h2>
-            <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
-              {slowMoneyClub.handle}
-            </p>
-            <p className="text-muted leading-relaxed max-w-md">
-              {slowMoneyClub.description}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <MagneticButton href={slowMoneyClub.instagram} external>
-                Instagram ↗
-              </MagneticButton>
-              <MagneticButton href={slowMoneyClub.tiktok} external tone="light">
-                TikTok ↗
-              </MagneticButton>
+            <div className="grid md:grid-cols-[1fr_220px] gap-10 items-center">
+              <div>
+                <h2 className="font-display text-2xl text-ink mb-1">
+                  {slowMoneyClub.name}
+                </h2>
+                <p className="font-mono text-xs uppercase tracking-widest text-accent mb-4">
+                  {slowMoneyClub.handle}
+                </p>
+                <p className="text-muted leading-relaxed max-w-md">
+                  {slowMoneyClub.description}
+                </p>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <MagneticButton href={slowMoneyClub.instagram} external>
+                    Instagram ↗
+                  </MagneticButton>
+                  <MagneticButton href={slowMoneyClub.tiktok} external tone="light">
+                    TikTok ↗
+                  </MagneticButton>
+                </div>
+              </div>
+              <SlowMoneyReels />
             </div>
-            <SlowMoneyReels />
           </div>
         </Reveal>
       </section>

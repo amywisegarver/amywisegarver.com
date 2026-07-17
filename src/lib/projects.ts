@@ -224,6 +224,7 @@ export const projects: Project[] = [
     cover: { from: "#1a2233", to: "#3a5a8c" },
     image: "/images/window-tool-cover.png",
     role: [
+      "Owned the full single-window visualizer experience",
       "Partnered on UX strategy and all end-to-end UX and UI design",
       "Facilitated in-person research and testing with architects, dealers, builders, and Architectural Project Managers",
       "Built interactive prototypes, design-system components, and configuration logic",
@@ -233,7 +234,6 @@ export const projects: Project[] = [
       "3 UX/UI Designers 🙋",
       "1 UI Designer",
       "3 Developers",
-      "1 Design Manager",
     ],
     stats: [
       { value: "20", label: "architects, dealers & builders interviewed" },
