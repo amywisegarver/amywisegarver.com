@@ -238,9 +238,14 @@ export const projects: Project[] = [
     stats: [
       { value: "20", label: "architects, dealers & builders interviewed" },
       { value: "22%", label: "faster design-to-order conversion" },
-      { value: "25%", label: "decrease in post-submission order corrections" },
+      { value: "35%", label: "decrease in post-submission order corrections" },
     ],
     blocks: [
+      {
+        type: "video",
+        src: "/images/window-tool/demo-overview.mp4",
+        caption: "The Window Visualizer Tool in action.",
+      },
       {
         type: "numbered",
         anchor: "problem",

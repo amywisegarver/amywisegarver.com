@@ -184,13 +184,15 @@ function CompareBlock({
   return (
     <div className="grid sm:grid-cols-2 gap-6 max-w-3xl">
       <Reveal className="h-full">
-        <div className="flex flex-col rounded-2xl border border-line bg-surface-raised/60 p-6 h-full">
-          <p className="font-mono text-xs uppercase tracking-widest text-muted mb-3">
-            {block.before.title}
-          </p>
-          <p className="text-muted leading-relaxed">{block.before.body}</p>
+        <div className="flex flex-col justify-between gap-8 rounded-2xl border border-line bg-surface-raised/60 p-6 h-full">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-muted mb-3">
+              {block.before.title}
+            </p>
+            <p className="text-muted leading-relaxed">{block.before.body}</p>
+          </div>
           {block.before.image && (
-            <div className="mt-5 rounded-lg overflow-hidden border border-line mt-auto">
+            <div className="rounded-lg overflow-hidden border border-line">
               <Image
                 src={block.before.image}
                 alt={block.before.title}
@@ -203,13 +205,15 @@ function CompareBlock({
         </div>
       </Reveal>
       <Reveal className="h-full" delay={0.08}>
-        <div className="flex flex-col rounded-2xl border border-accent/40 bg-accent-soft/30 p-6 h-full">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
-            {block.after.title}
-          </p>
-          <p className="text-ink/80 leading-relaxed">{block.after.body}</p>
+        <div className="flex flex-col justify-between gap-8 rounded-2xl border border-accent/40 bg-accent-soft/30 p-6 h-full">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-widest text-accent mb-3">
+              {block.after.title}
+            </p>
+            <p className="text-ink/80 leading-relaxed">{block.after.body}</p>
+          </div>
           {block.after.image && (
-            <div className="mt-5 rounded-lg overflow-hidden border border-line mt-auto">
+            <div className="rounded-lg overflow-hidden border border-line">
               <Image
                 src={block.after.image}
                 alt={block.after.title}
