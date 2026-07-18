@@ -346,6 +346,7 @@ export const projects: Project[] = [
           {
             title: "A visual-first configuration experience",
             why: "Architects think visually. Images reduce cognitive load and accelerate learning.",
+            image: "/images/window-tool/decision-01.png",
             body: [
               "Replaced text-heavy dropdowns with visual option tiles, added operation arrows, hinge indicators, and glazing previews, avoided abbreviations and unclear terminology, and provided top-down views and section cuts for clarity.",
             ],
@@ -353,6 +354,7 @@ export const projects: Project[] = [
           {
             title: "Rule-based product validation",
             why: "Architects want flexibility, but the system must prevent configurations that cannot be built.",
+            image: "/images/window-tool/decision-02.png",
             body: [
               "All options pull from OMS product rules. Incompatible configurations are hidden or flagged. Complex assemblies trigger a “needs review” indicator, with clear, contextual feedback when manual review was required.",
             ],
@@ -360,6 +362,7 @@ export const projects: Project[] = [
           {
             title: "Multi-path assembly creation",
             why: "Different architects work in different ways.",
+            image: "/images/window-tool/decision-03.png",
             body: [
               "Path 1: start with dimension/shape constraints. Path 2: build an assembly by dragging individual units. Only compatible units appear in assembly mode, and alerts surface when structural support would be required.",
             ],
@@ -367,6 +370,7 @@ export const projects: Project[] = [
           {
             title: "Pricing with context, not absolutes",
             why: "Architects use pricing to make trade-offs, but dealers feared losing control of the conversation.",
+            image: "/images/window-tool/decision-04.png",
             body: [
               "Displayed MSRP-based ranges, not quotes, with disclaimers about multipliers, installation, and delivery. Pricing could be toggled on/off, and performance information was prioritized over pricing.",
             ],
@@ -374,6 +378,7 @@ export const projects: Project[] = [
           {
             title: "Highly requested scale references",
             why: "Architects rely on scale to evaluate proportions.",
+            image: "/images/window-tool/decision-05.png",
             body: [
               "Added adjustable human figure references, dimensional overlays around windows/assemblies, and the ability to compare scale to nearby units or adjacent assemblies.",
             ],
@@ -381,6 +386,7 @@ export const projects: Project[] = [
           {
             title: "Safety, performance, and clarity features",
             why: "Safety and performance often drive configuration decisions.",
+            image: "/images/window-tool/decision-06.png",
             body: [
               "Identified egress, fall protection, and temper requirements, added contextual performance metrics, and provided clear labeling for heights, heads, sills, and terminology — avoiding ambiguous abbreviations.",
             ],
@@ -388,6 +394,7 @@ export const projects: Project[] = [
           {
             title: "A collaboration-ready project dashboard",
             why: "Projects require alignment across architects, dealers, APMs, builders, and clients.",
+            image: "/images/window-tool/decision-07.png",
             body: [
               "Built a project timeline with status indicators, window schedule creation, notes/comments/file attachments, permission-based sharing (view, collaborate, own), support for global styles and spec-level adjustments, export formats for construction documents, and dealer handoff workflows.",
             ],
