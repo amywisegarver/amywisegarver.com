@@ -19,6 +19,13 @@ const DIMENSIONS: Record<string, { w: number; h: number }> = {
   "/images/scenes/create-scene-before-after.png": { w: 1800, h: 1232 },
   "/images/window-tool/shot-1.jpeg": { w: 592, h: 631 },
   "/images/window-tool/shot-2-after.png": { w: 912, h: 956 },
+  "/images/window-tool/decision-01.png": { w: 467, h: 1200 },
+  "/images/window-tool/decision-02.png": { w: 988, h: 1200 },
+  "/images/window-tool/decision-03.png": { w: 1200, h: 828 },
+  "/images/window-tool/decision-04.png": { w: 1200, h: 1112 },
+  "/images/window-tool/decision-05.png": { w: 1081, h: 1200 },
+  "/images/window-tool/decision-06.png": { w: 871, h: 1200 },
+  "/images/window-tool/decision-07.png": { w: 1200, h: 1064 },
 };
 
 function dims(src: string) {
@@ -339,22 +346,24 @@ function DecisionsBlock({
 
           if (item.image) {
             const reversed = i % 2 === 1;
+            const { w, h } = dims(item.image);
             return (
               <Reveal key={item.title} delay={i * 0.04}>
                 <div className="rounded-3xl border border-line bg-surface-raised/60 px-6 py-8 sm:px-10 sm:py-10">
-                  <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
-                    <div
-                      className={`relative h-[420px] sm:h-[480px] lg:h-[560px] ${
-                        reversed ? "md:order-2" : ""
-                      }`}
-                    >
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-contain"
-                        sizes="(min-width: 768px) 50vw, 100vw"
-                      />
+                  <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
+                    <div className={reversed ? "md:order-2" : undefined}>
+                      <div
+                        className="relative w-auto max-w-full mx-auto max-h-[420px] sm:max-h-[480px] lg:max-h-[560px]"
+                        style={{ aspectRatio: `${w} / ${h}` }}
+                      >
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          fill
+                          className="object-contain"
+                          sizes="(min-width: 768px) 50vw, 100vw"
+                        />
+                      </div>
                     </div>
                     <div className={reversed ? "md:order-1" : undefined}>
                       {text}
