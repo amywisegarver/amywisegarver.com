@@ -291,7 +291,7 @@ function GalleryBlock({
 
 function VideoBlock({ block }: { block: Extract<Block, { type: "video" }> }) {
   return (
-    <Reveal className="max-w-3xl">
+    <Reveal>
       <div className="rounded-2xl overflow-hidden">
         <video
           src={block.src}
