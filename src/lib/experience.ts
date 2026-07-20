@@ -54,13 +54,13 @@ export const slowMoneyClubReels: SlowMoneyReel[] = [
     tiktokUrl: "https://www.tiktok.com/@theslowmoneyclub/video/7662999720868039950",
   },
   {
-    image: "/images/slow-money-club/wtf-is-the-stock-market.png",
-    alt: "What the f*ck is the stock market",
-    tiktokUrl: "https://www.tiktok.com/@theslowmoneyclub/video/7653750515406261517",
+    image: "/images/slow-money-club/stop-using-debit-card.png",
+    alt: "Stop using your debit card",
+    tiktokUrl: "https://www.tiktok.com/@theslowmoneyclub/video/7664346342847761677",
   },
   {
-    image: "/images/slow-money-club/wtf-is-an-etf.png",
-    alt: "What the f*ck is an E.T.F.",
-    tiktokUrl: "https://www.tiktok.com/@theslowmoneyclub/video/7658552348268072206",
+    image: "/images/slow-money-club/invest-even-if-broke.png",
+    alt: "Why you should invest even if you're broke",
+    tiktokUrl: "https://www.tiktok.com/@theslowmoneyclub/video/7655065701501160718",
   },
 ];
